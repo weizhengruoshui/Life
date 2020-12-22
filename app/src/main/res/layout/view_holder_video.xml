@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    style="@style/view_holder_item_style">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/video_item_cover_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true" />
+        android:layout_height="@dimen/no_need_width_or_height"
+        android:background="@drawable/background"
+        app:layout_constraintDimensionRatio="@string/list_video_width_height_ratio"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/video_item_player"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/no_need_width_or_height"
         android:visibility="invisible"
         app:controller_layout_id="@layout/video_item_controls"
         app:hide_on_touch="false"
+        app:layout_constraintDimensionRatio="@string/list_video_width_height_ratio"
+        app:layout_constraintTop_toTopOf="parent"
         app:show_timeout="0" />
 
     <TextView
@@ -24,6 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/video_item_cover_image"
-        android:padding="@dimen/padding" />
+        android:padding="@dimen/padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/video_item_player" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

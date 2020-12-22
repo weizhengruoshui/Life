@@ -50,6 +50,7 @@ abstract class AppListFragment<I : MutableList<out Parcelable>, K : ListViewMode
 
     open fun initializeRecyclerView() {
         getRecyclerView().apply {
+            setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             adapter = recyclerViewAdapter
         }

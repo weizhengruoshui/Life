@@ -22,8 +22,8 @@ class ViewHolderText(
 
     private fun populateView() {
         viewModelText.apply {
-            viewHolderTextBinding.bViewHolderContent.text = recyclerViewTextItem?.text
-            viewHolderTextBinding.bViewHolderUpdateTime.text = recyclerViewTextItem?.updateTime
+            viewHolderTextBinding.textViewHolderContent.text = recyclerViewTextItem?.text
+            viewHolderTextBinding.textViewHolderUpdateTime.text = recyclerViewTextItem?.updateTime
         }
     }
 

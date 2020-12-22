@@ -1,47 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/a_view_holder_cv"
-    style="@style/view_holder_card_view_style">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/view_holder_item_style">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/image_view_holder_title"
+        style="@style/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_view_holder_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/no_need_width_or_height"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintDimensionRatio="@string/list_image_width_height_ratio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_holder_title" />
 
-        <TextView
-            android:id="@+id/a_view_holder_title"
-            style="@style/text_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/image_view_holder_author"
+        style="@style/text_others"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_holder_image" />
 
-        <ImageView
-            android:id="@+id/a_view_holder_header_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/a_view_holder_title"
-            android:contentDescription="@string/app_name" />
+    <TextView
+        android:id="@+id/image_view_holder_time"
+        style="@style/text_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_holder_author" />
 
-        <TextView
-            android:id="@+id/a_view_holder_author"
-            style="@style/text_others"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/a_view_holder_header_image" />
-
-        <TextView
-            android:id="@+id/a_view_holder_time"
-            style="@style/text_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/a_view_holder_author" />
-
-        <ImageButton
-            android:id="@+id/a_view_holder_more_action"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/a_view_holder_author"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/ic_more_black"
-            android:contentDescription="@string/app_name"
-            android:visibility="gone" />
-    </RelativeLayout>
-</androidx.cardview.widget.CardView>
+    <ImageButton
+        android:id="@+id/image_view_holder_more_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_more_black"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_holder_author" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,14 +29,14 @@ class ViewHolderTextAndImage(
 
     private fun onClickMore(view: View) {
         when (view.id) {
-            R.id.a_view_holder_title ->
+            R.id.image_view_holder_title ->
                 viewModelTextAndImage.generateWebsiteInfo()?.also { webSiteInformation ->
                     AppActivityRouter.startWebViewActivity(
                         parentFragmentApp.context,
                         webSiteInformation
                     )
                 }
-            R.id.a_view_holder_header_image -> {
+            R.id.image_view_holder_image -> {
                 com.yaya.utils.LogUtils.logD(javaClass.simpleName, "click on image")
                 AppActivityRouter.startScalableImageActivity(
                     parentFragmentApp.context,
@@ -51,17 +51,17 @@ class ViewHolderTextAndImage(
         ImageLoader.loadImage(
             parentFragmentApp,
             viewModelTextAndImage.getFirstImageUrl(),
-            viewHolderImageBinding.aViewHolderHeaderImage
+            viewHolderImageBinding.imageViewHolderImage
         )
-        viewHolderImageBinding.aViewHolderAuthor.apply {
+        viewHolderImageBinding.imageViewHolderAuthor.apply {
             text = viewModelTextAndImage.recyclerViewTextAndImageItem?.authorName
             setOnClickListener(this@ViewHolderTextAndImage::onClickMore)
         }
-        viewHolderImageBinding.aViewHolderTime.apply {
+        viewHolderImageBinding.imageViewHolderTime.apply {
             text = viewModelTextAndImage.recyclerViewTextAndImageItem?.date
             setOnClickListener(this@ViewHolderTextAndImage::onClickMore)
         }
-        viewHolderImageBinding.aViewHolderTitle.apply {
+        viewHolderImageBinding.imageViewHolderTitle.apply {
             text = viewModelTextAndImage.recyclerViewTextAndImageItem?.title
             setOnClickListener(this@ViewHolderTextAndImage::onClickMore)
         }
