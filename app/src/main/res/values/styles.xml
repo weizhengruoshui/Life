@@ -1,0 +1,78 @@
+<resources>
+
+    <!--  title text style  -->
+    <style name="text_title">
+        <item name="android:paddingStart">@dimen/padding</item>
+        <item name="android:textSize">@dimen/font_size_one</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!--  content text style  -->
+    <style name="text_content">
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:textSize">@dimen/font_size_two</item>
+    </style>
+    <!--  time text style  -->
+    <style name="text_time">
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:textSize">@dimen/font_size_three</item>
+    </style>
+    <!--  other text info  -->
+    <style name="text_others">
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:textSize">@dimen/font_size_four</item>
+    </style>
+
+    <!--  collapse layout text appearance  -->
+    <style name="collapsed_tool_bar_title_appearance">
+        <item name="android:textSize">@dimen/font_size_three</item>
+    </style>
+
+    <style name="expended_tool_bar_title_appearance">
+        <item name="android:textSize">@dimen/font_size_one</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!--  cardView style  -->
+    <style name="view_holder_card_view_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin</item>
+        <item name="android:padding">@dimen/padding</item>
+        <item name="cardCornerRadius">@dimen/radius_regular</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+
+    <!--  Main Fragment Style  -->
+    <!--  bottom navigation active text style  -->
+    <style name="bottom_navigation_txt_active">
+        <item name="android:textSize">@dimen/font_size_four</item>
+    </style>
+    <!--  bottom navigation inactive text style  -->
+    <style name="bottom_navigation_txt_inactive">
+        <item name="android:textSize">@dimen/font_size_five</item>
+    </style>
+
+
+    <!--  Almanac Fragment Style  -->
+    <!--  Key Text Style  -->
+    <style name="almanac_key">
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:layout_margin">@dimen/stroke_width</item>
+    </style>
+    <!--  value Text Style  -->
+    <style name="almanac_value">
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:layout_margin">@dimen/stroke_width</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!--  SettingsBottomSheetFragment Style  -->
+    <style name="settings_bottom_fragment_item" parent="text_others">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">@dimen/padding_start_and_end</item>
+        <item name="android:padding">@dimen/padding_start_and_end</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+</resources>

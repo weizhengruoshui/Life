@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--   color for the app bar and other primary UI elements -->
+    <color name="colorPrimary">#FFFFFF</color>
+
+    <!--   a darker variant of the primary color, used for
+           the status bar (on Android 5.0+) and contextual app bars -->
+    <color name="colorPrimaryDark">#B6B4B4</color>
+
+    <!--   a secondary color for controls like checkboxes and text fields -->
+    <color name="colorAccent">#2196F3</color>
+
+    <!--  A tonal variation of the primary color.  -->
+    <color name="colorPrimaryVariant">#3700B3</color>
+
+    <!--  A color that passes accessibility guidelines for text/iconography
+    when drawn on top of the primary color.  -->
+    <color name="colorOnPrimary">#FFFFFF</color>
+
+    <!--  The secondary branding color for the app, usually an accented complement to the primary branding color.  -->
+    <color name="colorSecondary">#03DAC6</color>
+
+    <!--  A tonal variation of the secondary color.  -->
+    <color name="colorSecondaryVariant">#018786</color>
+
+    <!--  A color that passes accessibility guidelines for text/iconography when drawn on top of the secondary color.  -->
+    <color name="colorOnSecondary">#000000</color>
+
+    <!--  The background color appears behind scrollable content.  -->
+    <color name="colorBackground">#FFFFFF</color>
+
+    <!--  A color that passes accessibility guidelines for text/iconography when drawn on top of the background color.  -->
+    <color name="colorOnBackground">#000000</color>
+
+    <!--  Surface colors affect surfaces of components, such as cards, sheets, and menus.  -->
+    <color name="colorSurface">#FFFFFF</color>
+
+    <!--  A color that passes accessibility guidelines for text/iconography when drawn on top of the surface color.  -->
+    <color name="colorOnSurface">#000000</color>
+
+    <!--  Error color indicates errors states, for components such as text fields  -->
+    <color name="colorError">#B00020</color>
+
+    <!--  A color that passes accessibility guidelines for text/iconography when drawn on top of the error color.  -->
+    <color name="colorOnError">#FFFFFF</color>
+
+    <color name="bottomColorPrimary">#2196F3</color>
+</resources>

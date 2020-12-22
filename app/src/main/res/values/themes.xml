@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  App theme  -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--  Bottom Navigation View  -->
+    <style name="BottomNavigationView" parent="AppTheme">
+        <item name="colorPrimary">@color/bottomColorPrimary</item>
+    </style>
+
+    <!-- common material button theme -->
+    <style name="MaterialButtonCommonTheme">
+        <item name="colorPrimary">@color/colorAccent</item>
+    </style>
+</resources>

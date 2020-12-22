@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/padding">
+
+    <TextView
+        android:id="@+id/profile"
+        style="@style/settings_bottom_fragment_item"
+        android:text="@string/not_implement"
+        app:drawableStartCompat="@drawable/ic_profile_black" />
+
+    <TextView
+        android:id="@+id/regular_notification"
+        style="@style/settings_bottom_fragment_item"
+        android:text="@string/settings_regular_notification"
+        app:drawableStartCompat="@drawable/ic_notifications_black" />
+
+    <TextView
+        android:id="@+id/with_parent_notification"
+        style="@style/settings_bottom_fragment_item"
+        android:text="@string/settings_with_parent_notification"
+        app:drawableStartCompat="@drawable/ic_notifications_black" />
+</LinearLayout>

@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+def ext = rootProject.ext
+def androidConfig = ext.android
+def libraries = ext.libraries
+
+android {
+    compileSdkVersion androidConfig.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionCode androidConfig.versionCode
+        versionName androidConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            versionNameSuffix '-debug'
+        }
+
+        canary {
+            initWith release
+            versionNameSuffix '-canary'
+        }
+
+        release {
+            minifyEnabled false
+            versionNameSuffix '-release'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    // common dependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libraries.kotlin_stdlib
+
+    //logger
+    implementation project(':utils')
+
+    //glide
+    implementation libraries.glide
+    kapt libraries.glide_compiler
+
+    // test
+    testImplementation libraries.junit
+    androidTestImplementation libraries.androidx_junit
+    androidTestImplementation libraries.androidx_espresso_core
+}

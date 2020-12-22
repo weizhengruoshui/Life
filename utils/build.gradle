@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+
+def ext = rootProject.ext
+def androidConfig = ext.android
+def libraries = ext.libraries
+
+android {
+    compileSdkVersion androidConfig.compileSdkVersion
+    buildToolsVersion androidConfig.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionCode androidConfig.versionCode
+        versionName androidConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            versionNameSuffix '-debug'
+        }
+
+        canary {
+            initWith release
+            versionNameSuffix '-canary'
+        }
+
+        release {
+            minifyEnabled false
+            versionNameSuffix '-release'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    // common dependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libraries.kotlin_stdlib
+
+    // test
+    testImplementation libraries.junit
+    androidTestImplementation libraries.androidx_junit
+    androidTestImplementation libraries.androidx_espresso_core
+}

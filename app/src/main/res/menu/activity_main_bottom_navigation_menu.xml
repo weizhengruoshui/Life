@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_news"
+        android:icon="@drawable/ic_news_black"
+        android:title="@string/news" />
+
+    <item
+        android:id="@+id/bottom_videos"
+        android:icon="@drawable/ic_videos_black"
+        android:title="@string/videos" />
+
+    <item
+        android:id="@+id/bottom_joke"
+        android:icon="@drawable/ic_jokes_black"
+        android:title="@string/jokes" />
+
+    <item
+        android:id="@+id/bottom_almanac"
+        android:icon="@drawable/ic_almanac_black"
+        android:title="@string/almanac" />
+</menu>

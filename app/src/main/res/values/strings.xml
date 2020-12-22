@@ -1,0 +1,39 @@
+<resources>
+    <!--  system level  -->
+    <string name="app_name">CB</string>
+    <string name="settings">Settings</string>
+    <string name="share">Share</string>
+    <string name="long_text_example">This is a long text example:  If opportunity doesn\’t knock, build a door; Success consists of going from failure to failure without loss of enthusiasm.</string>
+    <string name="short_text_example">Short text</string>
+    <string name="not_implement">NOT IMPLEMENT</string>
+    <string name="search_hint">Search Hint</string>
+
+    <!--  main fragment  -->
+    <string name="news">News</string>
+    <string name="jokes">Jokes</string>
+    <string name="almanac">Almanac</string>
+
+    <!--  almanac fragment  -->
+    <string name="select_date">Select Date</string>
+    <string name="solar_calendar">Solar Calendar</string>
+    <string name="lunar_calendar">Lunar Calendar</string>
+    <string name="offense">Offense</string>
+    <string name="forbiddance">Forbiddance</string>
+    <string name="worship">Worship</string>
+    <string name="five_elements">Five Elements</string>
+    <string name="sacrifice_of_gods">Sacrifice Of Gods</string>
+    <string name="benefits">Benefits</string>
+    <string name="drawbacks">Drawbacks</string>
+
+    <!--  oneiromancy fragment  -->
+    <string name="videos">Videos</string>
+
+    <!--  SettingsBottomSheetFragment  -->
+    <string name="settings_regular_notification">Regular Notification</string>
+    <string name="settings_with_parent_notification"> With Parent Notification</string>
+
+    <!--  media's path, These are from exoplayer codelab -->
+    <string name="media_url_mp3" translatable="false">https://storage.googleapis.com/exoplayer-test-media-0/Jazz_In_Paris.mp3</string>
+    <string name="media_url_mp4" translatable="false">https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4</string>
+    <string name="media_url_dash" translatable="false"><![CDATA[https://www.youtube.com/api/manifest/dash/id/bf5bb2419360daf1/source/youtube?as=fmp4_audio_clear,fmp4_sd_hd_clear&sparams=ip,ipbits,expire,source,id,as&ip=0.0.0.0&ipbits=0&expire=19000000000&signature=51AF5F39AB0CEC3E5497CD9C900EBFEAECCCB5C7.8506521BFC350652163895D4C26DEE124209AA9E&key=ik0]]></string>
+</resources>

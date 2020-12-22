@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="firebase_messaging_channel_id" translatable="false">combine</string>
+</resources>

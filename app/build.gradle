@@ -1,0 +1,156 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.firebase.crashlytics' //add for firebase crashlytics
+
+def ext = rootProject.ext
+def androidConfig = ext.android
+def libraries = ext.libraries
+android {
+    compileSdkVersion androidConfig.compileSdkVersion
+    buildToolsVersion androidConfig.buildToolsVersion
+    defaultConfig {
+        applicationId 'com.stephen.combination'
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionCode androidConfig.versionCode
+        versionName androidConfig.versionName
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
+        }
+
+        canary {
+            initWith release
+            applicationIdSuffix '.canary'
+            versionNameSuffix '-canary'
+        }
+
+        release {
+            minifyEnabled false
+            applicationIdSuffix '.release'
+            versionNameSuffix '-release'
+            // Enables code shrinking, obfuscation, and optimization for only
+            // project's release build type.
+            minifyEnabled true
+
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            shrinkResources true
+
+            // Includes the default ProGuard rules files that are packaged with
+            // the Android Gradle plugin. To learn more, go to the section about
+            // R8 configuration files.
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions 'world'
+    productFlavors {
+        domestic {
+            dimension 'world'
+            applicationIdSuffix '.domestic'
+            versionNameSuffix '-domestic'
+        }
+
+        oversea {
+            dimension 'world'
+            applicationIdSuffix '.oversea'
+            versionNameSuffix '-oversea'
+        }
+    }
+
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+
+        if (names.contains("domestic")) {
+            setIgnore(true)
+        }
+    }
+
+}
+
+//if you want to add a dependency for a variant that combines a product flavor
+// and a build type, then you must initialize the configuration name
+// in the configurations block.
+configurations {
+    // Initializes a placeholder for the overseaDebugImplementation dependency
+    // configuration.
+    overseaDebugImplementation {}
+}
+
+dependencies {
+    //common dependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libraries.kotlin_stdlib
+
+    // local library
+    implementation project(":player-lib")
+    implementation project(':image')
+    implementation project(':data')
+    implementation project(':utils')
+
+    //androidx
+    implementation libraries.androidx_appcompat
+    implementation libraries.androidx_core_ktx
+    implementation libraries.androidx_constraintlayout
+    implementation libraries.androidx_recyclerview
+    implementation libraries.androidx_cardview
+    implementation libraries.androidx_lifecycle_extensions
+    implementation libraries.androidx_viewpager2
+    implementation libraries.androidx_swipe_refresh
+    kapt libraries.androidx_lifecycle_compiler
+    implementation libraries.androidx_fragment_ktx
+    implementation libraries.androidx_activity_ktx
+
+    //google
+    implementation libraries.google_material
+
+    //dagger2
+    implementation libraries.dagger2
+    implementation libraries.dagger_android
+    implementation libraries.dagger_android_support
+    kapt libraries.dagger2_processor
+    kapt libraries.dagger_android_processor
+
+    //test
+    testImplementation libraries.junit
+    androidTestImplementation libraries.androidx_junit
+    androidTestImplementation libraries.androidx_espresso_core
+
+    //oversea dependencies
+    overseaImplementation libraries.firebase_analytics
+    overseaImplementation libraries.firebase_crashlytics
+    overseaImplementation libraries.firebase_messaging
+
+    //debug dependencies
+    debugImplementation libraries.leakcanary
+}
+
+// These plugins are just for oversea flavor
+apply plugin: 'com.google.gms.google-services'//add for firebase service
+
