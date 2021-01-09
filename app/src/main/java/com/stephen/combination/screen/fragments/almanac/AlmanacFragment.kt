@@ -13,11 +13,11 @@ import com.stephen.combination.common.viewmodel.DataViewModelFactory
 import com.yaya.data.almanac.AlmanacDay
 import com.yaya.data.almanac.AlmanacHour
 import com.stephen.combination.databinding.FragmentAlmanacBinding
-import com.stephen.combination.common.BaseFragment
+import com.stephen.combination.common.PageFragment
 import javax.inject.Inject
 
 class AlmanacFragment :
-    BaseFragment<Pair<AlmanacDay?, MutableList<AlmanacHour>?>, AlmanacViewModel>() {
+    PageFragment<Pair<AlmanacDay?, MutableList<AlmanacHour>?>, AlmanacViewModel>() {
 
     @Inject
     lateinit var dataViewModelFactory: DataViewModelFactory

@@ -1,10 +1,11 @@
 package com.stephen.combination.screen.fragments.jokes
 
-import com.yaya.data.DataRepository
-import com.yaya.data.DataWithList
-import com.yaya.data.jokes.JokeDetail
-import com.yaya.data.viewholder.RecyclerViewTextItem
 import com.stephen.combination.common.viewmodel.ListViewModel
+import com.yaya.data.DataRepository
+import com.yaya.data.DataWithObject
+import com.yaya.data.jokes.JokesResult
+import com.yaya.data.viewholder.RecyclerViewTextItem
+import com.yaya.utils.LogUtils
 
 class JokesViewModel(dataRepository: DataRepository) :
     ListViewModel<MutableList<RecyclerViewTextItem>>(
@@ -12,19 +13,34 @@ class JokesViewModel(dataRepository: DataRepository) :
     ) {
 
     override fun loadData() {
+        resetParams()
         compositeDisposable.add(
-            dataRepository.getRandomJokes()
-                .subscribe(::handleJokesData)
+            dataRepository.getLatestJokes(page, pageSize)
+                .subscribe(::handleLatestJokesData)
         )
     }
 
-    private fun handleJokesData(jokesResponse: DataWithList<JokeDetail>) {
-        liveData.value = jokesResponse.result.map {
+    override fun onLoadMore() {
+        LogUtils.logD(javaClass.simpleName, "onLoadMore")
+        compositeDisposable.add(
+            dataRepository.getLatestJokes(page, pageSize)
+                .subscribe(::handleLoadMoreJokesData)
+        )
+    }
+
+    private fun handleLatestJokesData(jokesResponse: DataWithObject<JokesResult>) {
+        data.value = jokesResponse.result.data.map {
             RecyclerViewTextItem(it.content, it.updatetime)
         }.toMutableList()
     }
 
-    override fun loadMore() {
-        TODO("Not yet implemented")
+    private fun handleLoadMoreJokesData(jokesResponse: DataWithObject<JokesResult>) {
+        moreData.value = jokesResponse.result.data.map {
+            RecyclerViewTextItem(it.content, it.updatetime)
+        }.toMutableList()
+    }
+
+    override fun initializeLoadedData(): MutableList<RecyclerViewTextItem> {
+        return mutableListOf()
     }
 }

@@ -15,7 +15,8 @@ import com.stephen.combination.dagger.module.FragmentModule
  * @property dataType is the fragment's base data.
  * @property viewModel is the fragment's viewModel
  */
-abstract class BaseFragment<dataType, viewModel : BaseViewModel<dataType>> : Fragment() {
+abstract class PageFragment<dataType, viewModel : BaseViewModel<dataType>> :
+    Fragment() {
 
     val fragmentViewModel: viewModel by lazy {
         getViewModel()
@@ -68,7 +69,7 @@ abstract class BaseFragment<dataType, viewModel : BaseViewModel<dataType>> : Fra
         val observer: Observer<dataType> = Observer { data ->
             populateData(data)
         }
-        fragmentViewModel.liveData.observe(this, observer)
+        fragmentViewModel.data.observe(this, observer)
     }
 
     open fun loadData() {

@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import androidx.appcompat.widget.AppCompatImageView
+import com.yaya.utils.LogUtils
 
 class ScalableImageView(context: Context, attrs: AttributeSet? = null) :
     AppCompatImageView(context, attrs) {
@@ -41,7 +42,7 @@ class ScalableImageView(context: Context, attrs: AttributeSet? = null) :
                     primaryTouchY = event.getY(primaryIndex)
                     activePointerId = event.getPointerId(primaryIndex)
                 }
-                com.yaya.utils.LogUtils.logD(javaClass.simpleName, "down")
+                LogUtils.logD(javaClass.simpleName, "down")
             }
             MotionEvent.ACTION_MOVE -> {
                 // Find the index of the active pointer and fetch its position
@@ -54,7 +55,7 @@ class ScalableImageView(context: Context, attrs: AttributeSet? = null) :
                     if (i == 0) {
                         val primaryPointX = event.getX(i)
                         val primaryPointY = event.getY(i)
-                        com.yaya.utils.LogUtils.logD(
+                        LogUtils.logD(
                             javaClass.simpleName,
                             "primaryPoint: ($primaryPointX, $primaryPointY) + pointId: ${event.getPointerId(
                                 i
@@ -65,7 +66,7 @@ class ScalableImageView(context: Context, attrs: AttributeSet? = null) :
                     if (i == 1) {
                         val anotherPointX = event.getX(i)
                         val anotherPointY = event.getY(i)
-                        com.yaya.utils.LogUtils.logD(
+                        LogUtils.logD(
                             javaClass.simpleName,
                             "notPrimaryPoint: ($anotherPointX, $anotherPointY) + pointId: ${event.getPointerId(
                                 i
@@ -83,14 +84,14 @@ class ScalableImageView(context: Context, attrs: AttributeSet? = null) :
                 activePointerId = invalidPointerId
                 checkScaleFactor = true
                 invalidate()
-                com.yaya.utils.LogUtils.logD(javaClass.simpleName, "up")
+                LogUtils.logD(javaClass.simpleName, "up")
             }
             MotionEvent.ACTION_POINTER_DOWN -> {
                 event.actionIndex.let { secondaryIndex ->
                     secondaryTouchX = event.getX(secondaryIndex)
                     secondaryTouchY = event.getY(secondaryIndex)
                 }
-                com.yaya.utils.LogUtils.logD(javaClass.simpleName, "pointer down")
+                LogUtils.logD(javaClass.simpleName, "pointer down")
             }
             MotionEvent.ACTION_POINTER_UP -> {
                 event.actionIndex.let { secondaryIndex ->
@@ -107,7 +108,7 @@ class ScalableImageView(context: Context, attrs: AttributeSet? = null) :
                 }
                 checkScaleFactor = true
                 invalidate()
-                com.yaya.utils.LogUtils.logD(javaClass.simpleName, "pointer up")
+                LogUtils.logD(javaClass.simpleName, "pointer up")
             }
 
         }

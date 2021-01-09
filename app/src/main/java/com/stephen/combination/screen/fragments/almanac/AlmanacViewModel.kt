@@ -18,7 +18,7 @@ class AlmanacViewModel(private val dataRepository: DataRepository) :
                 dataRepository.getAlmanacDay(DateUtils.formatDate(date)),
                 dataRepository.getAlmanacHours(DateUtils.formatDate(date))
             ).subscribe({ (almanacDayResponse, almanacHoursResponse) ->
-                liveData.value =
+                data.value =
                     Pair(almanacDayResponse.body()?.result, almanacHoursResponse.body()?.result)
             }, ::handleException)
         )

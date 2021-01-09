@@ -9,6 +9,6 @@ class ScalableImageModel : BaseViewModel<String>() {
     }
 
     override fun loadData() {
-        liveData.value = IMAGE_URL
+        data.value = IMAGE_URL
     }
 }

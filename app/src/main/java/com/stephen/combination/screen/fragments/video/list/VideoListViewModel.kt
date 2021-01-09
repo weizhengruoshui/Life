@@ -31,7 +31,7 @@ class VideoListViewModel(dataRepository: DataRepository) :
         )
     }
 
-    override fun loadMore() {
+    override fun onLoadMore() {
         TODO("Not yet implemented")
     }
 
@@ -53,7 +53,7 @@ class VideoListViewModel(dataRepository: DataRepository) :
     }
 
     fun firstPlayViewHolder(recyclerView: RecyclerView) {
-        if (liveData.value?.isEmpty() == true) {
+        if (data.value?.isEmpty() == true) {
             return
         }
         val playerFirstVideoSingle = Single.create(SingleOnSubscribe<String>() { emitter ->
@@ -97,6 +97,10 @@ class VideoListViewModel(dataRepository: DataRepository) :
         stopTheTargetPositionItem(recyclerView, currentPlayItemPosition)
     }
 
+    override fun initializeLoadedData(): MutableList<RecyclerViewVideoItem> {
+        return mutableListOf()
+    }
+
     private fun playTheTargetPositionItem(recyclerView: RecyclerView, position: Int) {
         currentPlayItemPosition = position
         (recyclerView.findViewHolderForAdapterPosition(position) as? ViewHolderVideo)?.playVideo()
@@ -108,6 +112,6 @@ class VideoListViewModel(dataRepository: DataRepository) :
     }
 
     private fun handleVideosData(videosResponse: DataWithList<RecyclerViewVideoItem>) {
-        liveData.value = videosResponse.result
+        data.value = videosResponse.result
     }
 }

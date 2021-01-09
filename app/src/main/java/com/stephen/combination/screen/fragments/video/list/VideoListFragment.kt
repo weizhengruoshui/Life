@@ -99,8 +99,11 @@ class VideoListFragment :
         return binding.videosSwipeRefresh
     }
 
-    inner class VideoListScrollListener : RecyclerView.OnScrollListener() {
+    override fun resetViewBinding() {
+        _binding = null
+    }
 
+    inner class VideoListScrollListener : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             when (newState) {
                 RecyclerView.SCROLL_STATE_IDLE ->
@@ -109,9 +112,5 @@ class VideoListFragment :
                     fragmentViewModel.unbindFirstPlayVideoSchedule()
             }
         }
-    }
-
-    override fun resetViewBinding() {
-        _binding = null
     }
 }

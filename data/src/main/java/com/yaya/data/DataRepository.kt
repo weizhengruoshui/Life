@@ -10,6 +10,7 @@ import com.yaya.data.news.NewsResult
 import com.yaya.data.oneiromancy.OneiromancyDetail
 import com.yaya.data.remote.RemoteRepository
 import com.yaya.data.viewholder.RecyclerViewVideoItem
+import com.yaya.utils.LogUtils
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import retrofit2.Response
@@ -51,7 +52,10 @@ class DataRepository(
 
     override fun getNews(type: String): Single<DataWithObject<NewsResult>> {
         return remoteRepository.getNews(type)
-            .onErrorResumeNext { localRepository.getNews(type) }
+            .onErrorResumeNext {
+                LogUtils.logD(javaClass.simpleName, "RequestNews Error, use the local data.")
+                localRepository.getNews(type)
+            }
             .observeOn(AndroidSchedulers.mainThread())
     }
 
@@ -60,7 +64,7 @@ class DataRepository(
         page: Int,
         pageSize: Int,
         sort: String
-    ): Single<Response<DataWithObject<JokesResult>>> {
+    ): Single<DataWithObject<JokesResult>> {
         return remoteRepository.getJokes()
             .onErrorResumeNext(localRepository.getJokes())
             .observeOn(AndroidSchedulers.mainThread())
@@ -69,8 +73,8 @@ class DataRepository(
     override fun getLatestJokes(
         page: Int,
         pageSize: Int
-    ): Single<Response<DataWithObject<JokesResult>>> {
-        return remoteRepository.getLatestJokes()
+    ): Single<DataWithObject<JokesResult>> {
+        return remoteRepository.getLatestJokes(page, pageSize)
             .onErrorResumeNext(localRepository.getLatestJokes())
             .observeOn(AndroidSchedulers.mainThread())
     }

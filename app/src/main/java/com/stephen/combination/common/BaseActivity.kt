@@ -35,7 +35,7 @@ abstract class BaseActivity<dataType, viewModel : BaseViewModel<dataType>> : App
         val observer: Observer<dataType> = Observer { data ->
             populateData(data)
         }
-        activityViewModel.liveData.observe(this, observer)
+        activityViewModel.data.observe(this, observer)
     }
 
     /*

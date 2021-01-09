@@ -19,12 +19,12 @@ interface Repository {
         page: Int = 1,
         pageSize: Int = 20,
         sort: String = DataRepository.DESC_SORT
-    ): Single<Response<DataWithObject<JokesResult>>>
+    ): Single<DataWithObject<JokesResult>>
 
     fun getLatestJokes(
         page: Int = 1,
         pageSize: Int = 20
-    ): Single<Response<DataWithObject<JokesResult>>>
+    ): Single<DataWithObject<JokesResult>>
 
     fun getRandomJokes(): Single<DataWithList<JokeDetail>>
 

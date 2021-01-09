@@ -1,10 +1,11 @@
 package com.stephen.combination.screen.fragments.news
 
+import com.stephen.combination.common.viewmodel.ListViewModel
 import com.yaya.data.DataRepository
 import com.yaya.data.DataWithObject
 import com.yaya.data.news.NewsResult
 import com.yaya.data.viewholder.RecyclerViewTextAndImageItem
-import com.stephen.combination.common.viewmodel.ListViewModel
+import com.yaya.utils.LogUtils
 
 class NewsViewModel(dataRepository: DataRepository) :
     ListViewModel<MutableList<RecyclerViewTextAndImageItem>>(dataRepository) {
@@ -17,7 +18,7 @@ class NewsViewModel(dataRepository: DataRepository) :
     }
 
     private fun handleNewsData(newsData: DataWithObject<NewsResult>) {
-        liveData.value = newsData.result.data.map {
+        data.value = newsData.result.data.map {
             RecyclerViewTextAndImageItem(
                 it.title,
                 "Stephen",
@@ -29,7 +30,11 @@ class NewsViewModel(dataRepository: DataRepository) :
         }.toMutableList()
     }
 
-    override fun loadMore() {
-        TODO("Not yet implemented")
+    override fun onLoadMore() {
+        LogUtils.logD(javaClass.simpleName, "onLoadMore")
+    }
+
+    override fun initializeLoadedData(): MutableList<RecyclerViewTextAndImageItem> {
+        return mutableListOf()
     }
 }

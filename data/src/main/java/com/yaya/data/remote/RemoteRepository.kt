@@ -44,7 +44,7 @@ class RemoteRepository(
         page: Int,
         pageSize: Int,
         sort: String
-    ): Single<Response<DataWithObject<JokesResult>>> {
+    ): Single<DataWithObject<JokesResult>> {
         return juHeApi.getJokeList(
             sort,
             JOKE_API_KEY, time, page, pageSize
@@ -54,19 +54,23 @@ class RemoteRepository(
                 doOnResponseSuccessful(response) {
                     cacheJokes(response)
                 }
+            }.map { response: Response<DataWithObject<JokesResult>> ->
+                return@map if (response.isSuccessful) response.body() else null
             }
     }
 
     override fun getLatestJokes(
         page: Int,
         pageSize: Int
-    ): Single<Response<DataWithObject<JokesResult>>> {
+    ): Single<DataWithObject<JokesResult>> {
         return juHeApi.getJokeLatest(JOKE_API_KEY, page, pageSize)
             .subscribeOn(Schedulers.io())
             .doOnSuccess { response ->
                 doOnResponseSuccessful(response) {
                     cacheJokes(response)
                 }
+            }.map { response: Response<DataWithObject<JokesResult>> ->
+                return@map if (response.isSuccessful) response.body() else null
             }
     }
 

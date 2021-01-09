@@ -2,11 +2,12 @@ package com.stephen.combination.common.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.yaya.utils.LogUtils
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseViewModel<T> : ViewModel() {
     open val compositeDisposable: CompositeDisposable = CompositeDisposable()
-    var liveData: MutableLiveData<T> = MutableLiveData()
+    val data: MutableLiveData<T> = MutableLiveData()
 
     fun clearDisposables() {
         compositeDisposable.clear()
@@ -17,7 +18,7 @@ abstract class BaseViewModel<T> : ViewModel() {
     }
 
     fun handleException(throwable: Throwable) {
-        com.yaya.utils.LogUtils.logE(javaClass.simpleName, throwable.toString())
+        LogUtils.logE(javaClass.simpleName, throwable.toString())
     }
 
     abstract fun loadData()

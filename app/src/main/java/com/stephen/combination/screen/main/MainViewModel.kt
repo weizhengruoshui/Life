@@ -6,6 +6,6 @@ import com.stephen.combination.common.viewmodel.BaseViewModel
 class MainViewModel : BaseViewModel<String>() {
 
     override fun loadData() {
-        liveData.value = FragmentNavigator.FragmentTag.NEWS
+        data.value = FragmentNavigator.FragmentTag.NEWS
     }
 }

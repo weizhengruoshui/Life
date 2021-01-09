@@ -41,14 +41,14 @@ class LocalRepository(private val combinationDatabase: CombinationDatabase) : Re
         page: Int,
         pageSize: Int,
         sort: String
-    ): Single<Response<DataWithObject<JokesResult>>> {
+    ): Single<DataWithObject<JokesResult>> {
         return getDatabaseJokes()
     }
 
     override fun getLatestJokes(
         page: Int,
         pageSize: Int
-    ): Single<Response<DataWithObject<JokesResult>>> {
+    ): Single<DataWithObject<JokesResult>> {
         return getDatabaseJokes()
     }
 
@@ -104,7 +104,7 @@ class LocalRepository(private val combinationDatabase: CombinationDatabase) : Re
             .getAlmanacInfo(date)
     }
 
-    private fun getDatabaseJokes(): Single<Response<DataWithObject<JokesResult>>> {
+    private fun getDatabaseJokes(): Single<DataWithObject<JokesResult>> {
         return combinationDatabase
             .jokesDao()
             .getJokes()
@@ -113,9 +113,7 @@ class LocalRepository(private val combinationDatabase: CombinationDatabase) : Re
                 jokeEntities.forEach { jokeEntity ->
                     dataList.add(jokeEntity.jokeDetail)
                 }
-                val dataWithObject: DataWithObject<JokesResult> =
-                    DataWithObject(SUCCESS_CODE, REASON_DATABASE, JokesResult(dataList))
-                Response.success(dataWithObject)
+                return@map DataWithObject(SUCCESS_CODE, REASON_DATABASE, JokesResult(dataList))
             }
     }
 

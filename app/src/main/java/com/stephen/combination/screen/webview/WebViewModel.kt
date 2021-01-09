@@ -9,6 +9,6 @@ class WebViewModel : BaseViewModel<String>() {
     }
 
     override fun loadData() {
-        liveData.value = LINK_INFO
+        data.value = LINK_INFO
     }
 }

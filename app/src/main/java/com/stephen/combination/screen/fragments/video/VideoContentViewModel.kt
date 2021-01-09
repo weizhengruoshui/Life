@@ -1,16 +1,22 @@
 package com.stephen.combination.screen.fragments.video
 
+import com.stephen.combination.common.viewmodel.ListViewModel
 import com.yaya.data.DataRepository
 import com.yaya.data.viewholder.RecyclerViewTextAndImageItem
-import com.stephen.combination.common.viewmodel.ListViewModel
 
 class VideoContentViewModel(dataRepository: DataRepository) :
     ListViewModel<MutableList<RecyclerViewTextAndImageItem>>(dataRepository) {
-    override fun loadMore() {
+
+
+    override fun loadData() {
         TODO("Not yet implemented")
     }
 
-    override fun loadData() {
-        //to do
+    override fun onLoadMore() {
+        TODO("Not yet implemented")
+    }
+
+    override fun initializeLoadedData(): MutableList<RecyclerViewTextAndImageItem> {
+        return mutableListOf()
     }
 }
