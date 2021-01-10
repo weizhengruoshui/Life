@@ -6,10 +6,11 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stephen.combination.common.list.holder.view.ViewHolderVideo
+import com.stephen.combination.common.viewmodel.ListViewModel
 import com.yaya.data.DataRepository
 import com.yaya.data.DataWithList
 import com.yaya.data.viewholder.RecyclerViewVideoItem
-import com.stephen.combination.common.viewmodel.ListViewModel
+import com.yaya.utils.LogUtils
 import io.reactivex.Single
 import io.reactivex.SingleOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -63,7 +64,7 @@ class VideoListViewModel(dataRepository: DataRepository) :
                             .findFirstCompletelyVisibleItemPosition()
                     ) == null
                 }) {
-                com.yaya.utils.LogUtils.logD(javaClass.simpleName, "list hasn't finished inflating")
+                LogUtils.logD(javaClass.simpleName, "list hasn't finished inflating")
             }
             emitter.onSuccess("ready")
         })

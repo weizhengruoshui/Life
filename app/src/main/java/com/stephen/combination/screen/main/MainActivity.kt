@@ -20,6 +20,14 @@ class MainActivity : AppActivity<String, MainViewModel>() {
     @Named(DaggerName.ACTIVITY)
     lateinit var fragmentNavigator: FragmentNavigator
 
+    private val videoListFragmentToken = FragmentToken(FragmentNavigator.FragmentTag.VIDEO_LIST)
+
+    private val newsFragmentToken = FragmentToken(FragmentNavigator.FragmentTag.NEWS)
+
+    private val jokeFragmentToken = FragmentToken(FragmentNavigator.FragmentTag.JOKE)
+
+    private val almanacFragmentToken = FragmentToken(FragmentNavigator.FragmentTag.ALMANAC)
+
     private lateinit var binding: ActivityMainBinding
 
     override fun initVariables() {
@@ -31,6 +39,7 @@ class MainActivity : AppActivity<String, MainViewModel>() {
         setContentView(binding.root)
         attributeBottomMenu()
         attributeTopMenu()
+        addFragments()
     }
 
     override fun getViewModel(): MainViewModel {
@@ -53,31 +62,16 @@ class MainActivity : AppActivity<String, MainViewModel>() {
     }
 
     override fun populateData(data: String) {
-        fragmentNavigator.push(
-            R.id.main_container,
-            FragmentToken(data)
-        )
+        switchMainPage(FragmentToken(data))
     }
 
     private fun attributeBottomMenu() {
         binding.mainBottomMenu.setOnNavigationItemSelectedListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
-                R.id.bottom_videos -> fragmentNavigator.push(
-                    R.id.main_container,
-                    FragmentToken(FragmentNavigator.FragmentTag.VIDEO_LIST, true)
-                )
-                R.id.bottom_news -> fragmentNavigator.push(
-                    R.id.main_container,
-                    FragmentToken(FragmentNavigator.FragmentTag.NEWS, true)
-                )
-                R.id.bottom_joke -> fragmentNavigator.push(
-                    R.id.main_container,
-                    FragmentToken(FragmentNavigator.FragmentTag.JOKE, true)
-                )
-                R.id.bottom_almanac -> fragmentNavigator.push(
-                    R.id.main_container,
-                    FragmentToken(FragmentNavigator.FragmentTag.ALMANAC, true)
-                )
+                R.id.bottom_videos -> switchMainPage(videoListFragmentToken)
+                R.id.bottom_news -> switchMainPage(newsFragmentToken)
+                R.id.bottom_joke -> switchMainPage(jokeFragmentToken)
+                R.id.bottom_almanac -> switchMainPage(almanacFragmentToken)
             }
             return@setOnNavigationItemSelectedListener true
         }
@@ -95,5 +89,20 @@ class MainActivity : AppActivity<String, MainViewModel>() {
                 FragmentNavigator.FragmentTag.SETTINGS_BOTTOM_DIALOG_FRAGMENT
             )
         }
+    }
+
+    private fun addFragments() {
+        fragmentNavigator.add(R.id.main_container, videoListFragmentToken)
+
+        fragmentNavigator.add(R.id.main_container, almanacFragmentToken)
+
+        fragmentNavigator.add(R.id.main_container, jokeFragmentToken)
+
+        fragmentNavigator.add(R.id.main_container, newsFragmentToken)
+    }
+
+
+    private fun switchMainPage(fragmentToken: FragmentToken) {
+        fragmentNavigator.show(R.id.main_container, fragmentToken)
     }
 }

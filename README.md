@@ -8,6 +8,10 @@ oversea and domestic. Because there are some different between common libraries.
 App Module is mainly about business logic. It uses dagger 2 to inject fields, uses firebase to
 analysis event.
 
+### Fragment's managerment
+
+On the main page, there are 4 fragmnets. We just choose hide or show which one.
+
 ## Data Module
 
 Data Module is major about data manuipulation. It includes get data from local and network. It uses
