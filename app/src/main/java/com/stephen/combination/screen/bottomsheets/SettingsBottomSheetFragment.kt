@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.stephen.combination.dagger.module.FragmentModule
 import com.stephen.combination.databinding.FragmentSettingsBottomSheetBinding
-import com.stephen.combination.common.BaseActivity
+import com.stephen.combination.common.AppActivity
 import com.stephen.combination.dagger.component.DaggerFragmentComponent
 import com.stephen.combination.notification.NotificationData
 import com.stephen.combination.notification.RegularNotificationFactory
@@ -40,7 +40,7 @@ class SettingsBottomSheetFragment : BottomSheetDialogFragment() {
 
     private fun initFragmentComponent() {
         val fragmentComponent = DaggerFragmentComponent.builder()
-            .activityComponent((activity as BaseActivity<*, *>).activityComponent)
+            .activityComponent((activity as AppActivity<*, *>).activityComponent)
             .fragmentModule(
                 FragmentModule(
                     this

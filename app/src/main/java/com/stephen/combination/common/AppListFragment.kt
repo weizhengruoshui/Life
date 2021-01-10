@@ -17,16 +17,12 @@ import com.yaya.utils.LogUtils
 import javax.inject.Inject
 
 abstract class AppListFragment<itemDataType : MutableList<out Parcelable>, listViewModel : ListViewModel<itemDataType>> :
-    PageFragment<itemDataType, listViewModel>() {
+    AppFragment<itemDataType, listViewModel>() {
 
     lateinit var listFragmentComponent: ListFragmentComponent
 
     @Inject
     lateinit var recyclerViewAdapter: RecyclerViewAdapter
-
-    private val refreshLayout: SwipeRefreshLayout? by lazy {
-        getListSwipeRefreshView()
-    }
 
     override fun initVariables(savedInstanceState: Bundle?) {
         super.initVariables(savedInstanceState)
@@ -44,7 +40,7 @@ abstract class AppListFragment<itemDataType : MutableList<out Parcelable>, listV
     override fun attributeViews() {
         initializeRecyclerView()
 
-        refreshLayout?.apply {
+        getListSwipeRefreshView()?.apply {
             setColorSchemeColors(
                 resources.getColor(R.color.colorAccent, null),
                 resources.getColor(R.color.colorSecondary, null),
@@ -70,7 +66,7 @@ abstract class AppListFragment<itemDataType : MutableList<out Parcelable>, listV
     }
 
     override fun populateData(data: itemDataType) {
-        refreshLayout?.isRefreshing = false
+        getListSwipeRefreshView()?.isRefreshing = false
         getRecyclerView().apply {
             (adapter as RecyclerViewAdapter).inflateData(data.toMutableList())
         }

@@ -4,11 +4,11 @@ import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import com.yaya.data.webview.WebSiteInformation
 import com.stephen.combination.databinding.ActivityWebViewBinding
-import com.stephen.combination.common.BaseActivity
+import com.stephen.combination.common.AppActivity
 import com.yaya.image.ImageLoader
 import java.net.URLDecoder
 
-class WebViewActivity : BaseActivity<String, WebViewModel>() {
+class WebViewActivity : AppActivity<String, WebViewModel>() {
 
     private lateinit var binding: ActivityWebViewBinding
 

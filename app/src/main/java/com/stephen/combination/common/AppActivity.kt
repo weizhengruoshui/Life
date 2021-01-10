@@ -16,7 +16,7 @@ import com.stephen.combination.dagger.module.ActivityModule
  */
 
 @SuppressLint("Registered")
-abstract class BaseActivity<dataType, viewModel : BaseViewModel<dataType>> : AppCompatActivity() {
+abstract class AppActivity<dataType, viewModel : BaseViewModel<dataType>> : AppCompatActivity() {
 
     lateinit var activityComponent: ActivityComponent
 

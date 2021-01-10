@@ -4,7 +4,7 @@ import android.content.res.Configuration
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
 import com.stephen.combination.R
-import com.stephen.combination.common.BaseActivity
+import com.stephen.combination.common.AppActivity
 import com.stephen.combination.common.manager.fragment.FragmentNavigator
 import com.stephen.combination.common.manager.fragment.FragmentToken
 import com.stephen.combination.dagger.DaggerName
@@ -14,7 +14,7 @@ import com.yaya.utils.LogUtils
 import javax.inject.Inject
 import javax.inject.Named
 
-class MainActivity : BaseActivity<String, MainViewModel>() {
+class MainActivity : AppActivity<String, MainViewModel>() {
 
     @Inject
     @Named(DaggerName.ACTIVITY)

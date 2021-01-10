@@ -2,9 +2,9 @@ package com.stephen.combination.notification
 
 import androidx.lifecycle.ViewModelProvider
 import com.stephen.combination.databinding.ActivityNotificationBinding
-import com.stephen.combination.common.BaseActivity
+import com.stephen.combination.common.AppActivity
 
-class NotificationActivity : BaseActivity<String, NotificationViewModel>() {
+class NotificationActivity : AppActivity<String, NotificationViewModel>() {
 
     lateinit var binding: ActivityNotificationBinding
 

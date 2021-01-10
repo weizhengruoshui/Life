@@ -1,6 +1,6 @@
 package com.stephen.combination.common.manager.fragment
 
-import com.stephen.combination.common.PageFragment
+import com.stephen.combination.common.AppFragment
 import com.stephen.combination.screen.fragments.almanac.AlmanacFragment
 import com.stephen.combination.screen.fragments.jokes.JokesFragmentApp
 import com.stephen.combination.screen.fragments.news.NewsFragment
@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class AppFragmentFactory @Inject constructor() {
 
-    fun getFragment(fragmentToken: FragmentToken): PageFragment<*, *> {
+    fun getFragment(fragmentToken: FragmentToken): AppFragment<*, *> {
         return when (fragmentToken.tag) {
             FragmentNavigator.FragmentTag.NEWS -> NewsFragment.newInstance()
             FragmentNavigator.FragmentTag.JOKE -> JokesFragmentApp.newInstance()

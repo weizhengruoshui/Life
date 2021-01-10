@@ -10,19 +10,20 @@ import com.stephen.combination.common.viewmodel.BaseViewModel
 import com.stephen.combination.dagger.component.DaggerFragmentComponent
 import com.stephen.combination.dagger.component.FragmentComponent
 import com.stephen.combination.dagger.module.FragmentModule
+import com.yaya.utils.LogUtils
 
 /**
  * @property dataType is the fragment's base data.
  * @property viewModel is the fragment's viewModel
  */
-abstract class PageFragment<dataType, viewModel : BaseViewModel<dataType>> :
+abstract class AppFragment<dataType, viewModel : BaseViewModel<dataType>> :
     Fragment() {
 
     val fragmentViewModel: viewModel by lazy {
         getViewModel()
     }
 
-    lateinit var parentActivity: BaseActivity<*, *>
+    lateinit var parentActivity: AppActivity<*, *>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +57,7 @@ abstract class PageFragment<dataType, viewModel : BaseViewModel<dataType>> :
 
     fun provideFragmentComponent(): FragmentComponent {
         return DaggerFragmentComponent.builder()
-            .activityComponent((activity as BaseActivity<*, *>).activityComponent)
+            .activityComponent((activity as AppActivity<*, *>).activityComponent)
             .fragmentModule(
                 FragmentModule(
                     this
@@ -77,7 +78,7 @@ abstract class PageFragment<dataType, viewModel : BaseViewModel<dataType>> :
     }
 
     open fun initVariables(savedInstanceState: Bundle?) {
-        parentActivity = requireActivity() as BaseActivity<*, *>
+        parentActivity = requireActivity() as AppActivity<*, *>
     }
 
     abstract fun onCreateRootView(

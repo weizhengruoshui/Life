@@ -2,9 +2,9 @@ package com.stephen.combination.screen.deeplink
 
 import androidx.lifecycle.ViewModelProvider
 import com.stephen.combination.R
-import com.stephen.combination.common.BaseActivity
+import com.stephen.combination.common.AppActivity
 
-class DeepLinkActivity : BaseActivity<String, DeepLinkViewModel>() {
+class DeepLinkActivity : AppActivity<String, DeepLinkViewModel>() {
     override fun getViewModel(): DeepLinkViewModel {
         return ViewModelProvider(this).get(DeepLinkViewModel::class.java)
     }
