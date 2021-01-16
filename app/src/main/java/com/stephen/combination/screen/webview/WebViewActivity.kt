@@ -66,4 +66,8 @@ class WebViewActivity : AppActivity<String, WebViewModel>() {
         onBackPressed()
         return true
     }
+
+    override fun onBackPressed() {
+        supportFinishAfterTransition()
+    }
 }

@@ -1,12 +1,13 @@
 package com.stephen.combination.common.list.holder.view
 
 import android.view.View
+import androidx.core.app.ActivityOptionsCompat
 import com.stephen.combination.R
+import com.stephen.combination.common.AppListFragment
 import com.stephen.combination.common.list.holder.viewmodel.ViewModelTextAndImage
 import com.stephen.combination.common.manager.activity.AppActivityRouter
-import com.yaya.data.viewholder.RecyclerViewTextAndImageItem
 import com.stephen.combination.databinding.ViewHolderImageBinding
-import com.stephen.combination.common.AppListFragment
+import com.yaya.data.viewholder.RecyclerViewTextAndImageItem
 import com.yaya.image.ImageLoader
 import javax.inject.Inject
 
@@ -33,7 +34,12 @@ class ViewHolderTextAndImage(
                 viewModelTextAndImage.generateWebsiteInfo()?.also { webSiteInformation ->
                     AppActivityRouter.startWebViewActivity(
                         parentFragmentApp.context,
-                        webSiteInformation
+                        webSiteInformation,
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(
+                            parentFragmentApp.parentActivity,
+                            viewHolderImageBinding.imageViewHolderImage,
+                            getString(R.string.transition_view_holder_image)
+                        )
                     )
                 }
             R.id.image_view_holder_image -> {

@@ -8,16 +8,17 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_layout_height"
         app:collapsedTitleTextAppearance="@style/collapsed_tool_bar_title_appearance"
-        app:expandedTitleTextAppearance="@style/expended_tool_bar_title_appearance"
         app:contentScrim="?android:attr/colorPrimary"
         app:expandedTitleMarginStart="@dimen/margin_start_and_end"
+        app:expandedTitleTextAppearance="@style/expended_tool_bar_title_appearance"
         app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/toolbar_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:transitionName="@string/transition_view_holder_image" />
 
         <View
             android:layout_width="match_parent"

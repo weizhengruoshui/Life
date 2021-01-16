@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_start_and_end"
         android:backgroundTint="@color/colorAccent"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/ic_add_black"
         app:layout_anchor="@id/web_app_bar_layout"
         app:layout_anchorGravity="bottom|end" />

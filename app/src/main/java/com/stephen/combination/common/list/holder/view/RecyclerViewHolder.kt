@@ -23,4 +23,8 @@ abstract class RecyclerViewHolder<I : Parcelable>(
     abstract fun bindData(data: I)
 
     abstract fun onViewRecycled()
+
+    fun getString(id: Int): String {
+        return itemView.resources.getString(id)
+    }
 }
