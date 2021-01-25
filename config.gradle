@@ -9,15 +9,15 @@ ext {
     ]
 
     versions = [
-            dagger2  : '2.30.1',
+            dagger2  : '2.31.2',
             retrofit2: '2.9.0',
             glide    : '4.11.0',
             lifecycle: '2.2.0',
-            room     : '2.2.5'
+            room     : '2.2.6'
     ]
 
     libraries = [
-            kotlin_stdlib                : 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.20',
+            kotlin_stdlib                : 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.21',
 
             //androidx
             androidx_appcompat           : 'androidx.appcompat:appcompat:1.2.0',
@@ -39,9 +39,9 @@ ext {
 
 
             //Firebase
-            firebase_analytics           : 'com.google.firebase:firebase-analytics:18.0.0',
+            firebase_analytics           : 'com.google.firebase:firebase-analytics:18.0.1',
             firebase_crashlytics         : 'com.google.firebase:firebase-crashlytics:17.3.0',
-            firebase_messaging           : 'com.google.firebase:firebase-messaging:21.0.0',
+            firebase_messaging           : 'com.google.firebase:firebase-messaging:21.0.1',
 
             //google
             google_material              : 'com.google.android.material:material:1.2.1',
