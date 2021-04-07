@@ -40,8 +40,8 @@ abstract class AppFragment<dataType, viewModel : BaseViewModel<dataType>> :
         return onCreateRootView(inflater, container, savedInstanceState)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         attributeViews()
     }
 

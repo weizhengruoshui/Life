@@ -48,33 +48,12 @@ class FragmentNavigator constructor(
         currentShowFragmentTags[containerViewId] = fragmentToken
     }
 
-    fun push(@IdRes containerViewId: Int, fragmentToken: FragmentToken) {
-        if (getCurrentFragment(containerViewId)?.tag == fragmentToken.tag) {
-            return
-        }
-
-        val fragmentToShow =
-            fragmentManager.findFragmentByTag(fragmentToken.tag) ?: appFragmentFactory.getFragment(
-                fragmentToken
-            )
-        fragmentManager.beginTransaction().apply {
-            replace(containerViewId, fragmentToShow, fragmentToken.tag)
-            if (fragmentToken.isBackStack) {
-                addToBackStack(fragmentToken.tag)
-            }
-            commit()
-        }
-    }
 
     fun scrollCurrentFragmentToTop(@IdRes containerViewId: Int) {
         val currentFragment = getCurrentFragment(containerViewId)
         if (currentFragment is AppListFragment<*, *>) {
             currentFragment.scrollToTop()
         }
-    }
-
-    fun popBack() {
-        fragmentManager.popBackStack()
     }
 
     private fun getCurrentFragment(@IdRes containerViewId: Int): Fragment? {

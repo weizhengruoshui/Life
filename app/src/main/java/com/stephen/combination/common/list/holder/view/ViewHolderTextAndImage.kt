@@ -28,7 +28,7 @@ class ViewHolderTextAndImage(
         populateView()
     }
 
-    private fun onClickMore(view: View) {
+    private fun onClickEvent(view: View) {
         when (view.id) {
             R.id.image_view_holder_title ->
                 viewModelTextAndImage.generateWebsiteInfo()?.also { webSiteInformation ->
@@ -61,15 +61,15 @@ class ViewHolderTextAndImage(
         )
         viewHolderImageBinding.imageViewHolderAuthor.apply {
             text = viewModelTextAndImage.recyclerViewTextAndImageItem?.authorName
-            setOnClickListener(this@ViewHolderTextAndImage::onClickMore)
+            setOnClickListener(this@ViewHolderTextAndImage::onClickEvent)
         }
         viewHolderImageBinding.imageViewHolderTime.apply {
             text = viewModelTextAndImage.recyclerViewTextAndImageItem?.date
-            setOnClickListener(this@ViewHolderTextAndImage::onClickMore)
+            setOnClickListener(this@ViewHolderTextAndImage::onClickEvent)
         }
         viewHolderImageBinding.imageViewHolderTitle.apply {
             text = viewModelTextAndImage.recyclerViewTextAndImageItem?.title
-            setOnClickListener(this@ViewHolderTextAndImage::onClickMore)
+            setOnClickListener(this@ViewHolderTextAndImage::onClickEvent)
         }
     }
 

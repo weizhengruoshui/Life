@@ -33,7 +33,7 @@ class VideoListViewModel(dataRepository: DataRepository) :
     }
 
     override fun onLoadMore() {
-        TODO("Not yet implemented")
+        //TODO
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)

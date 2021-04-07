@@ -23,9 +23,9 @@ abstract class AppActivity<dataType, viewModel : BaseViewModel<dataType>> : AppC
     private val activityViewModel: viewModel by lazy { getViewModel() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        initComponent()
         initVariables()
         super.onCreate(savedInstanceState)
-        initComponent()
         bindObserver()
         loadData()
         attributeViews()
