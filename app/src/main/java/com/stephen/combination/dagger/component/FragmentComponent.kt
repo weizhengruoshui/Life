@@ -3,7 +3,7 @@ package com.stephen.combination.dagger.component
 import com.stephen.combination.dagger.module.FragmentModule
 import com.stephen.combination.dagger.module.NotificationModule
 import com.stephen.combination.dagger.scope.FragmentScope
-import com.stephen.combination.screen.bottomsheets.SettingsBottomSheetFragment
+import com.stephen.combination.screen.fragments.bottomsheets.SettingsBottomSheetFragment
 import com.stephen.combination.screen.fragments.almanac.AlmanacFragment
 import dagger.Component
 

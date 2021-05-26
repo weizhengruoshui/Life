@@ -3,7 +3,11 @@
     <string name="app_name">CB</string>
     <string name="settings">Settings</string>
     <string name="share">Share</string>
-    <string name="long_text_example">This is a long text example:  If opportunity doesn\’t knock, build a door; Success consists of going from failure to failure without loss of enthusiasm.</string>
+    <string name="long_text_example">Adding a Toolbar directly to an AppBarLayout gives you access to the enterAlwaysCollapsed and exitUntilCollapsed scroll flags, but not the detailed control on how different elements react to collapsing. For that, you can use CollapsingToolbarLayout:
+This setup uses CollapsingToolbarLayout’s app:layout_collapseMode="pin" to ensure that the Toolbar itself remains pinned to the top of the screen while the view collapses. Even better, when you use CollapsingToolbarLayout and Toolbar together, the title will automatically appear larger when the layout is fully visible, then transition to its default size as it is collapsed. Note that in those cases, you should call setTitle() on the CollapsingToolbarLayout, rather than on the Toolbar itself.
+In addition to pinning a view, you can use app:layout_collapseMode="parallax" (and optionally app:layout_collapseParallaxMultiplier="0.7" to set the parallax multiplier) to implement parallax scrolling (say of a sibling ImageView within the CollapsingToolbarLayout). This use case pairs nicely with the app:contentScrim="?attr/colorPrimary" attribute for CollapsingToolbarLayout, adding a full bleed scrim when the view is collapsed.
+
+</string>
     <string name="short_text_example">Short text</string>
     <string name="not_implement">NOT IMPLEMENT</string>
     <string name="search_hint">Search Hint</string>
@@ -33,6 +37,9 @@
     <!--  SettingsBottomSheetFragment  -->
     <string name="settings_regular_notification">Regular Notification</string>
     <string name="settings_with_parent_notification"> With Parent Notification</string>
+
+    <!--  account page  -->
+    <string name="account">Account</string>
 
     <!--  media's path, These are from exoplayer codelab -->
     <string name="media_url_mp3" translatable="false">https://storage.googleapis.com/exoplayer-test-media-0/Jazz_In_Paris.mp3</string>

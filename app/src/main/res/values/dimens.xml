@@ -12,7 +12,7 @@
     <dimen name="stroke_width">2dp</dimen>
     <dimen name="padding">8dp</dimen>
     <dimen name="margin">4dp</dimen>
-    <dimen name="no_need_width_or_height">0dp</dimen>
+    <dimen name="zero">0dp</dimen>
 
     <!--  font size  -->
     <dimen name="font_size_one">22sp</dimen>
@@ -20,8 +20,4 @@
     <dimen name="font_size_three">14sp</dimen>
     <dimen name="font_size_four">12sp</dimen>
     <dimen name="font_size_five">8sp</dimen>
-
-    <!--  app bar dimen  -->
-    <dimen name="app_bar_layout_height">320dp</dimen>
-    <dimen name="app_bar_bottom_gradient_height">100dp</dimen>
 </resources>

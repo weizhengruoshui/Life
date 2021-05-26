@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/profile"
         style="@style/settings_bottom_fragment_item"
-        android:text="@string/not_implement"
+        android:text="@string/account"
         app:drawableStartCompat="@drawable/ic_profile_black" />
 
     <TextView

@@ -9,7 +9,7 @@ import com.stephen.combination.common.manager.fragment.FragmentNavigator
 import com.stephen.combination.common.manager.fragment.FragmentToken
 import com.stephen.combination.dagger.DaggerName
 import com.stephen.combination.databinding.ActivityMainBinding
-import com.stephen.combination.screen.bottomsheets.SettingsBottomSheetFragment
+import com.stephen.combination.screen.fragments.bottomsheets.SettingsBottomSheetFragment
 import com.yaya.utils.LogUtils
 import javax.inject.Inject
 import javax.inject.Named

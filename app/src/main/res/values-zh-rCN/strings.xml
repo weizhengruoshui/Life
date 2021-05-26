@@ -31,4 +31,7 @@
     <!--  SettingsBottomSheetFragment  -->
     <string name="settings_regular_notification">正常通知</string>
     <string name="settings_with_parent_notification">栈通知</string>
+
+    <!--  account page  -->
+    <string name="account">賬戶</string>
 </resources>

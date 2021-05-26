@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--  Add WAKE LOCK for Firebase  -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <permission
         android:name="com.stephen.combination.APP_AIDL"
@@ -21,6 +23,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".screen.main.MainActivity"
             android:configChanges="uiMode|orientation|screenSize|screenLayout|keyboardHidden"
@@ -31,6 +34,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".screen.account.AccountActivity" />
 
         <activity android:name=".screen.deeplink.DeepLinkActivity">
             <intent-filter>
@@ -44,7 +49,9 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
+
         <activity android:name=".screen.scalableimage.ScalableImageActivity" />
+
         <activity
             android:name=".screen.webview.WebViewActivity"
             android:parentActivityName=".screen.main.MainActivity" />

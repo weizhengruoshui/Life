@@ -1,19 +1,15 @@
 package com.stephen.combination.screen.fragments.almanac
 
-import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import androidx.lifecycle.ViewModelProvider
-import com.stephen.combination.R
-import com.yaya.utils.animation.PropertyAnimatorUtils
+import com.stephen.combination.common.AppFragment
 import com.stephen.combination.common.viewmodel.DataViewModelFactory
+import com.stephen.combination.databinding.FragmentAlmanacBinding
 import com.yaya.data.almanac.AlmanacDay
 import com.yaya.data.almanac.AlmanacHour
-import com.stephen.combination.databinding.FragmentAlmanacBinding
-import com.stephen.combination.common.AppFragment
 import javax.inject.Inject
 
 class AlmanacFragment :
@@ -51,22 +47,7 @@ class AlmanacFragment :
     }
 
     override fun attributeViews() {
-        binding.almanacRootView.apply {
-            setBackgroundResource(R.drawable.alpha_background)
-            setOnClickListener {
-                (background as AnimationDrawable).stop()
-                (background as AnimationDrawable).start()
-                PropertyAnimatorUtils.alphaAnimator(binding.almanacCoverView, 0f, 1.0f, 1000)
-            }
-        }
-
-        binding.almanacAnimationButton.apply {
-            setOnClickListener {
-                val myAnimation = AnimationUtils.loadAnimation(context, R.anim.animation_set)
-                startAnimation(myAnimation)
-                PropertyAnimatorUtils.valueAnimator()
-            }
-        }
+        //nothing to be done
     }
 
     override fun populateData(data: Pair<AlmanacDay?, MutableList<AlmanacHour>?>) {

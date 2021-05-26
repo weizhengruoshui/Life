@@ -31,6 +31,17 @@ abstract class AppActivity<dataType, viewModel : BaseViewModel<dataType>> : AppC
         attributeViews()
     }
 
+    open fun initComponent() {
+        activityComponent = DaggerActivityComponent.builder()
+            .appComponent((application as MainApplication).appComponent)
+            .activityModule(
+                ActivityModule(
+                    this
+                )
+            )
+            .build()
+    }
+
     open fun bindObserver() {
         val observer: Observer<dataType> = Observer { data ->
             populateData(data)
@@ -45,20 +56,14 @@ abstract class AppActivity<dataType, viewModel : BaseViewModel<dataType>> : AppC
         activityViewModel.loadData()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     override fun onDestroy() {
         activityViewModel.disposeAllDisposables()
         super.onDestroy()
-    }
-
-    open fun initComponent() {
-        activityComponent = DaggerActivityComponent.builder()
-            .appComponent((application as MainApplication).appComponent)
-            .activityModule(
-                ActivityModule(
-                    this
-                )
-            )
-            .build()
     }
 
     abstract fun initVariables()

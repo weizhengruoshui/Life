@@ -14,7 +14,7 @@
     <ImageView
         android:id="@+id/image_view_holder_image"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/no_need_width_or_height"
+        android:layout_height="@dimen/zero"
         android:contentDescription="@string/app_name"
         android:transitionName="@string/transition_view_holder_image"
         app:layout_constraintDimensionRatio="@string/list_image_width_height_ratio"

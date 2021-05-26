@@ -6,7 +6,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/video_item_cover_image"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/no_need_width_or_height"
+        android:layout_height="@dimen/zero"
         android:background="@drawable/background"
         app:layout_constraintDimensionRatio="@string/list_video_width_height_ratio"
         app:layout_constraintTop_toTopOf="parent" />
@@ -14,7 +14,7 @@
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/video_item_player"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/no_need_width_or_height"
+        android:layout_height="@dimen/zero"
         android:visibility="invisible"
         app:controller_layout_id="@layout/video_item_controls"
         app:hide_on_touch="false"

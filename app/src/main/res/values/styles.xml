@@ -23,13 +23,21 @@
     </style>
 
     <!--  collapse layout text appearance  -->
+    <style name="collapsed_tool_bar_style">
+        <item name="collapsedTitleTextAppearance">@style/collapsed_tool_bar_title_appearance</item>
+        <item name="contentScrim">?android:colorPrimary</item>
+        <item name="expandedTitleMarginStart">@dimen/margin_start_and_end</item>
+        <item name="expandedTitleTextAppearance">@style/expanded_tool_bar_title_appearance</item>
+    </style>
+
     <style name="collapsed_tool_bar_title_appearance">
         <item name="android:textSize">@dimen/font_size_three</item>
     </style>
 
-    <style name="expended_tool_bar_title_appearance">
+    <style name="expanded_tool_bar_title_appearance">
         <item name="android:textSize">@dimen/font_size_one</item>
         <item name="android:textColor">@color/colorAccent</item>
+
     </style>
 
     <!--  list item style  -->

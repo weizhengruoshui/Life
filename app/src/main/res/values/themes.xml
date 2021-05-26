@@ -7,16 +7,19 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
         <!--  Enable window enter transition  -->
         <item name="android:windowActivityTransitions">true</item>
 
         <!--  Specify enter and exit transitions  -->
-<!--        <item name="android:windowEnterTransition">@android:transition/fade</item>
-        <item name="android:windowExitTransition">@android:transition/fade</item>-->
+        <!--        <item name="android:windowEnterTransition">@android:transition/fade</item>
+                <item name="android:windowExitTransition">@android:transition/fade</item>-->
 
         <!--  Specify shared element transition  -->
-        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform</item>
-        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform
+        </item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform
+        </item>
 
     </style>
 

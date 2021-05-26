@@ -26,7 +26,6 @@ class WebViewActivity : AppActivity<String, WebViewModel>() {
         setContentView(binding.root)
         setSupportActionBar(binding.webAppBarLayout.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = ""
         binding.webView.webViewClient = CustomizedWebViewClient()
         binding.webView.webChromeClient = CustomizedChromeClient()
     }
@@ -55,7 +54,6 @@ class WebViewActivity : AppActivity<String, WebViewModel>() {
                 binding.webView.loadUrl(linkUrl)
             }
         }
-
     }
 
     override fun getViewModel(): WebViewModel {

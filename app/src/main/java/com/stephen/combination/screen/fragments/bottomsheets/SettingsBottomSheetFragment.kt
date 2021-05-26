@@ -1,4 +1,4 @@
-package com.stephen.combination.screen.bottomsheets
+package com.stephen.combination.screen.fragments.bottomsheets
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.stephen.combination.dagger.module.FragmentModule
 import com.stephen.combination.databinding.FragmentSettingsBottomSheetBinding
 import com.stephen.combination.common.AppActivity
+import com.stephen.combination.common.manager.activity.AppActivityRouter
 import com.stephen.combination.dagger.component.DaggerFragmentComponent
 import com.stephen.combination.notification.NotificationData
 import com.stephen.combination.notification.RegularNotificationFactory
 import com.stephen.combination.notification.WithParentNotification
+import com.stephen.combination.screen.account.AccountActivity
 import javax.inject.Inject
 
 class SettingsBottomSheetFragment : BottomSheetDialogFragment() {
@@ -63,6 +65,7 @@ class SettingsBottomSheetFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.profile.apply {
             setOnClickListener {
+                AppActivityRouter.startActivity(activity, AccountActivity::class.java)
                 dismiss()
             }
         }

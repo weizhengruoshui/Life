@@ -51,7 +51,6 @@ android {
         }
 
         release {
-            minifyEnabled false
             applicationIdSuffix '.release'
             versionNameSuffix '-release'
             // Enables code shrinking, obfuscation, and optimization for only

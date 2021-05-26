@@ -45,4 +45,6 @@
     <color name="colorOnError">#FFFFFF</color>
 
     <color name="bottomColorPrimary">#2196F3</color>
+
+    <color name="transparentWhite">#50FFFFFF</color>
 </resources>

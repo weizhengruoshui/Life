@@ -4,6 +4,7 @@ import com.stephen.combination.dagger.DaggerName
 import com.stephen.combination.dagger.module.ActivityModule
 import com.stephen.combination.dagger.scope.ActivityScope
 import com.stephen.combination.common.manager.fragment.FragmentNavigator
+import com.stephen.combination.screen.account.AccountActivity
 import com.yaya.data.DataRepository
 import com.stephen.combination.screen.main.MainActivity
 import com.stephen.player.PlayerViewAffinity
@@ -18,6 +19,8 @@ import javax.inject.Named
 interface ActivityComponent {
 
     fun inject(mainActivity: MainActivity)
+
+    fun inject(accountActivity: AccountActivity)
 
     @Named(DaggerName.ACTIVITY)
     fun getFragmentNavigator(): FragmentNavigator
