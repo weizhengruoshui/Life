@@ -13,8 +13,6 @@ android {
     defaultConfig {
         minSdkVersion androidConfig.minSdkVersion
         targetSdkVersion androidConfig.targetSdkVersion
-        versionCode androidConfig.versionCode
-        versionName androidConfig.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -25,19 +23,13 @@ android {
     }
 
     buildTypes {
-        debug {
-            debuggable true
-            versionNameSuffix '-debug'
-        }
 
         canary {
             initWith release
-            versionNameSuffix '-canary'
         }
 
         release {
             minifyEnabled false
-            versionNameSuffix '-release'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

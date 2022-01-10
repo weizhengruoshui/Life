@@ -52,14 +52,12 @@ class DownloadServiceHelper(private val application: Application) {
         customCacheKey: String,
         appData: ByteArray
     ): DownloadRequest {
-        return DownloadRequest(
-            requestId,
-            requestType,
-            contentUri,
-            streamKeys,
-            customCacheKey,
-            appData
-        )
+        return DownloadRequest.Builder(requestId, contentUri)
+            .setMimeType(requestType)
+            .setStreamKeys(streamKeys)
+            .setCustomCacheKey(customCacheKey)
+            .setData(appData)
+            .build()
     }
 
 }

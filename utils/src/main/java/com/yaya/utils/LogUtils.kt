@@ -9,12 +9,20 @@ class LogUtils {
         fun logD(
             tag: String,
             message: String?
-        ) = Log.d("$applicationName:$tag", message ?: "null")
+        ) {
+            if (BuildConfig.DEBUG) {
+                Log.d("$applicationName:$tag", message ?: "null")
+            }
+        }
 
 
         fun logE(
             tag: String,
             message: String?
-        ) = Log.e("$applicationName:$tag", message ?: "null")
+        ) {
+            if (BuildConfig.DEBUG) {
+                Log.e("$applicationName:$tag", message ?: "null")
+            }
+        }
     }
 }

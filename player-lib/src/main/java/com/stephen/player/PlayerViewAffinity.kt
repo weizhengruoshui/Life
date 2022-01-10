@@ -83,7 +83,7 @@ class PlayerViewAffinity(private val context: Context) {
     private fun createMediaSource(): MediaSource {
         val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(context, "Stephen")
         val progressiveMediaSourceFactory = ProgressiveMediaSource.Factory(dataSourceFactory)
-        return progressiveMediaSourceFactory.createMediaSource(configuration?.uri)
+        return progressiveMediaSourceFactory.createMediaSource(configuration?.uri!!)
     }
 
     interface PlayerStateListener {

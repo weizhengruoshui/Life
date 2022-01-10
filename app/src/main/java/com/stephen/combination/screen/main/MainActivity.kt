@@ -57,6 +57,10 @@ class MainActivity : AppActivity<String, MainViewModel>() {
                 javaClass.simpleName,
                 "portrait"
             )
+            else -> LogUtils.logD(
+                javaClass.simpleName,
+                newConfig.toString()
+            )
         }
         LogUtils.logD(javaClass.simpleName, "onConfigurationChanged")
     }
