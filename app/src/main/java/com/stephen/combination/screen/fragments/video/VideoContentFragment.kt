@@ -22,12 +22,6 @@ class VideoContentFragment : AppListFragment<MutableList<RecyclerViewTextAndImag
 
     private val binding get() = _binding!!
 
-    companion object {
-        fun newInstance(): VideoContentFragment {
-            return VideoContentFragment()
-        }
-    }
-
     override fun initVariables(savedInstanceState: Bundle?) {
         super.initVariables(savedInstanceState)
         listFragmentComponent.inject(this)

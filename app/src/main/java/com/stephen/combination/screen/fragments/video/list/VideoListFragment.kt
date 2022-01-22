@@ -5,20 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.stephen.combination.R
-import com.stephen.combination.dagger.DaggerName
-import com.stephen.combination.common.manager.fragment.FragmentNavigator
-import com.stephen.combination.common.manager.fragment.FragmentToken
-import com.stephen.combination.common.viewmodel.DataViewModelFactory
-import com.yaya.data.viewholder.RecyclerViewVideoItem
-import com.stephen.combination.databinding.FragmentVideoListBinding
 import com.stephen.combination.common.AppListFragment
+import com.stephen.combination.common.viewmodel.DataViewModelFactory
+import com.stephen.combination.databinding.FragmentVideoListBinding
 import com.stephen.player.PlayerViewAffinity
+import com.yaya.data.viewholder.RecyclerViewVideoItem
 import javax.inject.Inject
-import javax.inject.Named
 
 class VideoListFragment :
     AppListFragment<MutableList<RecyclerViewVideoItem>, VideoListViewModel>() {
@@ -29,19 +23,9 @@ class VideoListFragment :
     @Inject
     lateinit var playerViewAffinity: PlayerViewAffinity
 
-    @Inject
-    @Named(DaggerName.ACTIVITY)
-    lateinit var parentFragmentNavigator: FragmentNavigator
-
     private var _binding: FragmentVideoListBinding? = null
 
     private val binding get() = _binding!!
-
-    companion object {
-        fun newInstance(): VideoListFragment {
-            return VideoListFragment()
-        }
-    }
 
     override fun initVariables(savedInstanceState: Bundle?) {
         super.initVariables(savedInstanceState)

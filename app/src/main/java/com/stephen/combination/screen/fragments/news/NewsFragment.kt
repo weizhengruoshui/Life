@@ -22,12 +22,6 @@ class NewsFragment : AppListFragment<MutableList<RecyclerViewTextAndImageItem>, 
 
     private val binding get() = _binding!!
 
-    companion object {
-        fun newInstance(): NewsFragment {
-            return NewsFragment()
-        }
-    }
-
     override fun initVariables(savedInstanceState: Bundle?) {
         super.initVariables(savedInstanceState)
         listFragmentComponent.inject(this)

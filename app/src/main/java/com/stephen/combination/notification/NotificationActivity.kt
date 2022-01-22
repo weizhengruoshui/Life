@@ -9,10 +9,11 @@ class NotificationActivity : AppActivity<String, NotificationViewModel>() {
     lateinit var binding: ActivityNotificationBinding
 
     override fun initVariables() {
-        binding = ActivityNotificationBinding.inflate(layoutInflater)
+        //Nothing to do.
     }
 
     override fun attributeViews() {
+        binding = ActivityNotificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 

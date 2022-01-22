@@ -22,12 +22,6 @@ class JokesFragmentApp : AppListFragment<MutableList<RecyclerViewTextItem>, Joke
 
     private val binding get() = _binding!!
 
-    companion object {
-        fun newInstance(): JokesFragmentApp {
-            return JokesFragmentApp()
-        }
-    }
-
     override fun initVariables(savedInstanceState: Bundle?) {
         super.initVariables(savedInstanceState)
         listFragmentComponent.inject(this)

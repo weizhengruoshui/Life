@@ -19,10 +19,11 @@ class WebViewActivity : AppActivity<String, WebViewModel>() {
     }
 
     override fun initVariables() {
-        binding = ActivityWebViewBinding.inflate(layoutInflater)
+        //Nothing to do.
     }
 
     override fun attributeViews() {
+        binding = ActivityWebViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.webAppBarLayout.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

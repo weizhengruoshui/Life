@@ -22,16 +22,6 @@ class AlmanacFragment :
 
     private val binding get() = _binding!!
 
-    companion object {
-        fun newInstance(): AlmanacFragment {
-            val args = Bundle()
-            val fragment =
-                AlmanacFragment()
-            fragment.arguments = args
-            return fragment
-        }
-    }
-
     override fun initVariables(savedInstanceState: Bundle?) {
         super.initVariables(savedInstanceState)
         provideFragmentComponent().inject(this)

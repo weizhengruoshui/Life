@@ -24,8 +24,8 @@ abstract class AppActivity<dataType, viewModel : BaseViewModel<dataType>> : AppC
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initComponent()
-        initVariables()
         super.onCreate(savedInstanceState)
+        initVariables()
         bindObserver()
         loadData()
         attributeViews()

@@ -11,10 +11,10 @@ class AccountActivity : AppActivity<String, AccountViewModel>() {
 
     override fun initVariables() {
         activityComponent.inject(this)
-        binding = ActivityAccountBinding.inflate(layoutInflater)
     }
 
     override fun attributeViews() {
+        binding = ActivityAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.accountTopBar.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

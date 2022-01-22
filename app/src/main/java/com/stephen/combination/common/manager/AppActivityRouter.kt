@@ -1,4 +1,4 @@
-package com.stephen.combination.common.manager.activity
+package com.stephen.combination.common.manager
 
 import android.content.Context
 import android.content.Intent

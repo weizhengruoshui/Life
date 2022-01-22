@@ -1,32 +1,17 @@
 package com.stephen.combination.screen.main
 
 import android.content.res.Configuration
-import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.stephen.combination.R
 import com.stephen.combination.common.AppActivity
-import com.stephen.combination.common.manager.fragment.FragmentNavigator
-import com.stephen.combination.common.manager.fragment.FragmentToken
-import com.stephen.combination.dagger.DaggerName
 import com.stephen.combination.databinding.ActivityMainBinding
 import com.stephen.combination.screen.fragments.bottomsheets.SettingsBottomSheetFragment
 import com.yaya.utils.LogUtils
-import javax.inject.Inject
-import javax.inject.Named
 
 class MainActivity : AppActivity<String, MainViewModel>() {
-
-    @Inject
-    @Named(DaggerName.ACTIVITY)
-    lateinit var fragmentNavigator: FragmentNavigator
-
-    private val videoListFragmentToken = FragmentToken(FragmentNavigator.FragmentTag.VIDEO_LIST)
-
-    private val newsFragmentToken = FragmentToken(FragmentNavigator.FragmentTag.NEWS)
-
-    private val jokeFragmentToken = FragmentToken(FragmentNavigator.FragmentTag.JOKE)
-
-    private val almanacFragmentToken = FragmentToken(FragmentNavigator.FragmentTag.ALMANAC)
 
     private lateinit var binding: ActivityMainBinding
 
@@ -37,9 +22,12 @@ class MainActivity : AppActivity<String, MainViewModel>() {
 
     override fun attributeViews() {
         setContentView(binding.root)
-        attributeBottomMenu()
-        attributeTopMenu()
-        addFragments()
+
+        val navController = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment)
+            ?.findNavController() ?: return
+        setupActionBar()
+        setupBottomMenu(navController)
     }
 
     override fun getViewModel(): MainViewModel {
@@ -66,47 +54,20 @@ class MainActivity : AppActivity<String, MainViewModel>() {
     }
 
     override fun populateData(data: String) {
-        switchMainPage(FragmentToken(data))
+        //Don't need to load data.
     }
 
-    private fun attributeBottomMenu() {
-        binding.mainBottomMenu.setOnNavigationItemSelectedListener { menuItem: MenuItem ->
-            when (menuItem.itemId) {
-                R.id.bottom_videos -> switchMainPage(videoListFragmentToken)
-                R.id.bottom_news -> switchMainPage(newsFragmentToken)
-                R.id.bottom_joke -> switchMainPage(jokeFragmentToken)
-                R.id.bottom_almanac -> switchMainPage(almanacFragmentToken)
-            }
-            return@setOnNavigationItemSelectedListener true
-        }
-
-        binding.mainBottomMenu.setOnNavigationItemReselectedListener {
-            fragmentNavigator.scrollCurrentFragmentToTop(R.id.main_container)
-        }
-
-    }
-
-    private fun attributeTopMenu() {
+    private fun setupActionBar() {
         binding.mainToolBarSettings.setOnClickListener {
             SettingsBottomSheetFragment.newInstance().show(
                 supportFragmentManager,
-                FragmentNavigator.FragmentTag.SETTINGS_BOTTOM_DIALOG_FRAGMENT
+                SettingsBottomSheetFragment.TAG
             )
         }
     }
 
-    private fun addFragments() {
-        fragmentNavigator.add(R.id.main_container, videoListFragmentToken)
 
-        fragmentNavigator.add(R.id.main_container, almanacFragmentToken)
-
-        fragmentNavigator.add(R.id.main_container, jokeFragmentToken)
-
-        fragmentNavigator.add(R.id.main_container, newsFragmentToken)
-    }
-
-
-    private fun switchMainPage(fragmentToken: FragmentToken) {
-        fragmentNavigator.show(R.id.main_container, fragmentToken)
+    private fun setupBottomMenu(navController: NavController) {
+        binding.mainBottomMenu.setupWithNavController(navController)
     }
 }

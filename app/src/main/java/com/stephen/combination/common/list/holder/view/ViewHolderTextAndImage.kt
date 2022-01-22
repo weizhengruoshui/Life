@@ -5,7 +5,7 @@ import androidx.core.app.ActivityOptionsCompat
 import com.stephen.combination.R
 import com.stephen.combination.common.AppListFragment
 import com.stephen.combination.common.list.holder.viewmodel.ViewModelTextAndImage
-import com.stephen.combination.common.manager.activity.AppActivityRouter
+import com.stephen.combination.common.manager.AppActivityRouter
 import com.stephen.combination.databinding.ViewHolderImageBinding
 import com.yaya.data.viewholder.RecyclerViewTextAndImageItem
 import com.yaya.image.ImageLoader
