@@ -3,9 +3,6 @@ apply from: "config.gradle"
 
 // this code will run before the gradle starting building
 buildscript {
-    ext {
-        kotlin_version = '1.4.21'
-    }
     repositories {
         google()
         mavenCentral()
@@ -15,7 +12,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.android.tools.build:gradle:7.1.2'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10'
         classpath 'com.google.gms:google-services:4.3.10' // Google Services plugin
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.8.1'  // Crashlytics plugin
