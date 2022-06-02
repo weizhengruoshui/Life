@@ -90,6 +90,7 @@ android {
             setIgnore(true)
         }
     }
+    namespace 'com.stephen.combination'
 
 }
 
