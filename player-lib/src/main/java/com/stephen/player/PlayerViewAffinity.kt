@@ -1,67 +1,71 @@
 package com.stephen.player
 
 import android.content.Context
-import com.google.android.exoplayer2.ExoPlaybackException
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.PlaybackException
 import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.analytics.AnalyticsListener
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.ui.PlayerView
+import com.google.android.exoplayer2.ui.StyledPlayerView
 import com.google.android.exoplayer2.upstream.DataSource
+import com.google.android.exoplayer2.upstream.DefaultDataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.EventLogger
 import com.yaya.utils.LogUtils
 
 class PlayerViewAffinity(private val context: Context) {
     var configuration: PlayerConfiguration? = null
-    var player: SimpleExoPlayer? = null
+    var player: ExoPlayer? = null
     private var playWhenReady = false
     private var currentWindow = 0
     private var playbackPosition: Long = 0
 
     fun initializeWithState(playerStateListener: PlayerStateListener? = null) {
         val trackSelector = DefaultTrackSelector(context)
-        player = SimpleExoPlayer.Builder(context)
+        player = ExoPlayer.Builder(context)
             .setTrackSelector(trackSelector)
             .build()
-        player?.also { simplePlayer ->
-            simplePlayer.addListener(PlayerEventListener(playerStateListener))
-            simplePlayer.addAnalyticsListener(PlayerAnalyticsListener())
-            simplePlayer.addAnalyticsListener(EventLogger(trackSelector))
-            simplePlayer.seekTo(currentWindow, playbackPosition)
-            simplePlayer.playWhenReady = playWhenReady
-            simplePlayer.prepare(createMediaSource(), false, false)
+        player?.also { exoPlayer ->
+            exoPlayer.addListener(PlayerEventListener(playerStateListener))
+            exoPlayer.addAnalyticsListener(PlayerAnalyticsListener())
+            exoPlayer.addAnalyticsListener(EventLogger(trackSelector))
+            exoPlayer.seekTo(currentWindow, playbackPosition)
+            exoPlayer.playWhenReady = playWhenReady
+            exoPlayer.setMediaSource(createMediaSource())
+            exoPlayer.prepare()
         }
     }
 
     fun initializeItemVideo(
-        playerView: PlayerView,
+        playerView: StyledPlayerView,
         playerStateListener: PlayerStateListener? = null
     ) {
         releaseItemVideo()
         val trackSelector = DefaultTrackSelector(context)
-        player = SimpleExoPlayer.Builder(context)
+        player = ExoPlayer.Builder(context)
             .setTrackSelector(trackSelector)
             .build()
         playerView.player = player
-        player?.also { simplePlayer ->
-            simplePlayer.volume = 0f
-            simplePlayer.addListener(PlayerEventListener(playerStateListener))
-            simplePlayer.addAnalyticsListener(PlayerAnalyticsListener())
-            simplePlayer.addAnalyticsListener(EventLogger(trackSelector))
-            simplePlayer.playWhenReady = true
-            simplePlayer.prepare(createMediaSource(), false, false)
+        player?.also { exoPlayer ->
+            exoPlayer.volume = 0f
+            exoPlayer.addListener(PlayerEventListener(playerStateListener))
+            exoPlayer.addAnalyticsListener(PlayerAnalyticsListener())
+            exoPlayer.addAnalyticsListener(EventLogger())
+            exoPlayer.playWhenReady = true
+            exoPlayer.setMediaSource(createMediaSource())
+            exoPlayer.prepare()
         }
     }
 
     fun releaseWithState() {
-        player?.also { simpleExoPlayer ->
-            playbackPosition = simpleExoPlayer.currentPosition
-            currentWindow = simpleExoPlayer.currentWindowIndex
-            playWhenReady = simpleExoPlayer.playWhenReady
-            simpleExoPlayer.release()
+        player?.also { exoPlayer ->
+            playbackPosition = exoPlayer.currentPosition
+            currentWindow = exoPlayer.currentMediaItemIndex
+            playWhenReady = exoPlayer.playWhenReady
+            exoPlayer.release()
         }
 
         player = null
@@ -77,13 +81,13 @@ class PlayerViewAffinity(private val context: Context) {
             videoFormat?.run {
                 height / width.toFloat()
             }
-        } ?: 9 / 16.toFloat()
+        } ?: (9 / 16.toFloat())
     }
 
     private fun createMediaSource(): MediaSource {
-        val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(context, "Stephen")
+        val dataSourceFactory: DataSource.Factory = DefaultDataSource.Factory(context)
         val progressiveMediaSourceFactory = ProgressiveMediaSource.Factory(dataSourceFactory)
-        return progressiveMediaSourceFactory.createMediaSource(configuration?.uri!!)
+        return progressiveMediaSourceFactory.createMediaSource(MediaItem.fromUri(configuration?.uri!!))
     }
 
     interface PlayerStateListener {
@@ -91,27 +95,39 @@ class PlayerViewAffinity(private val context: Context) {
     }
 
     private inner class PlayerEventListener(val playerStateListener: PlayerStateListener?) :
-        Player.EventListener {
+        Player.Listener {
         override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
             playerStateListener?.onPlayerStateChanged(playWhenReady, playbackState)
         }
 
+        override fun onPlayWhenReadyChanged(playWhenReady: Boolean, reason: Int) {
+            super.onPlayWhenReadyChanged(playWhenReady, reason)
+        }
+
+        override fun onPlaybackStateChanged(playbackState: Int) {
+            super.onPlaybackStateChanged(playbackState)
+        }
+
         override fun onIsPlayingChanged(isPlaying: Boolean) {
-            com.yaya.utils.LogUtils.logD(
+            LogUtils.logD(
                 javaClass.simpleName,
                 "isPlaying: $isPlaying"
             )
         }
 
-        override fun onPlayerError(error: ExoPlaybackException) {
-            com.yaya.utils.LogUtils.logD(
+        override fun onPlayerError(error: PlaybackException) {
+            LogUtils.logD(
                 javaClass.simpleName,
                 "play error: $error"
             )
         }
 
-        override fun onPositionDiscontinuity(reason: Int) {
-            com.yaya.utils.LogUtils.logD(
+        override fun onPositionDiscontinuity(
+            oldPosition: Player.PositionInfo,
+            newPosition: Player.PositionInfo,
+            reason: Int
+        ) {
+            LogUtils.logD(
                 javaClass.simpleName,
                 "position changed reason: $reason"
             )
@@ -119,8 +135,13 @@ class PlayerViewAffinity(private val context: Context) {
     }
 
     private inner class PlayerAnalyticsListener : AnalyticsListener {
-        override fun onSeekStarted(eventTime: AnalyticsListener.EventTime) {
-            com.yaya.utils.LogUtils.logD(
+        override fun onPositionDiscontinuity(
+            eventTime: AnalyticsListener.EventTime,
+            oldPosition: Player.PositionInfo,
+            newPosition: Player.PositionInfo,
+            reason: Int
+        ) {
+            LogUtils.logD(
                 javaClass.simpleName,
                 "onSeekStarted"
             )

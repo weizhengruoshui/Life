@@ -31,11 +31,14 @@ class AppDownloadService(
         return downloadServiceHelper.downloadManager
     }
 
-    override fun getForegroundNotification(downloads: MutableList<Download>): Notification {
+    override fun getScheduler(): Scheduler? {
         TODO("Not yet implemented")
     }
 
-    override fun getScheduler(): Scheduler? {
+    override fun getForegroundNotification(
+        downloads: MutableList<Download>,
+        notMetRequirements: Int
+    ): Notification {
         TODO("Not yet implemented")
     }
 

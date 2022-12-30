@@ -2,8 +2,8 @@ package com.stephen.combination.firebase
 
 import android.app.Application
 import android.os.Bundle
-import com.google.firebase.BuildConfig
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.stephen.combination.BuildConfig
 import com.stephen.combination.analytics.AnalyticsAgent
 import com.stephen.combination.analytics.AnalyticsParameters
 

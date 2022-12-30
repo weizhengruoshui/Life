@@ -135,8 +135,8 @@ class ScalableImageView(context: Context, attrs: AttributeSet? = null) :
 
     inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
 
-        override fun onScale(detector: ScaleGestureDetector?): Boolean {
-            mScaleFactor *= detector?.scaleFactor ?: mScaleFactor
+        override fun onScale(detector: ScaleGestureDetector): Boolean {
+            mScaleFactor *= detector.scaleFactor
 
             // Don't let the object get too small or too large.
             mScaleFactor = 0.1f.coerceAtLeast(mScaleFactor.coerceAtMost(5.0f))

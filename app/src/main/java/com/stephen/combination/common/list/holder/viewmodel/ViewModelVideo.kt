@@ -1,7 +1,7 @@
     package com.stephen.combination.common.list.holder.viewmodel
 
 import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.ui.PlayerView
+import com.google.android.exoplayer2.ui.StyledPlayerView
 import com.yaya.data.viewholder.RecyclerViewVideoItem
 import com.stephen.player.PlayerConfiguration
 import com.stephen.player.PlayerViewAffinity
@@ -14,14 +14,14 @@ class ViewModelVideo(private val playerViewAffinity: PlayerViewAffinity) : Recyc
     var updateVideoItemPlayerListener: UpdateVideoItemPlayerListener? = null
 
     fun playVideo(
-        playerView: PlayerView,
+        styledPlayerView: StyledPlayerView,
         updateVideoItemPlayerListener: UpdateVideoItemPlayerListener
     ) {
         this.updateVideoItemPlayerListener = updateVideoItemPlayerListener
         playerViewAffinity.configuration =
             PlayerConfiguration(recyclerViewVideoItem?.videoUrl)
         playerViewAffinity.initializeItemVideo(
-            playerView,
+            styledPlayerView,
             this
         )
     }

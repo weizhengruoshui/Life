@@ -3,11 +3,11 @@ package com.stephen.player.download
 import android.app.Application
 import android.net.Uri
 import com.google.android.exoplayer2.database.DatabaseProvider
-import com.google.android.exoplayer2.database.ExoDatabaseProvider
+import com.google.android.exoplayer2.database.StandaloneDatabaseProvider
 import com.google.android.exoplayer2.offline.DownloadManager
 import com.google.android.exoplayer2.offline.DownloadRequest
 import com.google.android.exoplayer2.offline.StreamKey
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.upstream.cache.Cache
 import com.google.android.exoplayer2.upstream.cache.NoOpCacheEvictor
 import com.google.android.exoplayer2.upstream.cache.SimpleCache
@@ -19,8 +19,9 @@ import java.io.File
  */
 class DownloadServiceHelper(private val application: Application) {
 
+    // Note: This should be a singleton in your app.
     private val databaseProvider: DatabaseProvider by lazy {
-        ExoDatabaseProvider(application)
+        StandaloneDatabaseProvider(application)
     }
 
     private val downloadDirectory: File =
@@ -31,12 +32,24 @@ class DownloadServiceHelper(private val application: Application) {
         SimpleCache(downloadDirectory, NoOpCacheEvictor(), databaseProvider)
     }
 
+    // Create a factory for reading the data from the network.
+    private val dataSourceFactory: DefaultHttpDataSource.Factory by lazy {
+        DefaultHttpDataSource.Factory()
+    }
+
+    // Choose an executor for downloading data. Using Runnable::run will cause each download task to
+    // download data on its own thread. Passing an executor that uses multiple threads will speed up
+    // download tasks that can be split into smaller parts for parallel execution. Applications that
+    // already have an executor for background downloads may wish to reuse their existing executor.
+    private val downloadExecutor = Runnable::run
+
     val downloadManager: DownloadManager by lazy {
         DownloadManager(
             application,
             databaseProvider,
             downloadCache,
-            DefaultHttpDataSourceFactory("")
+            dataSourceFactory,
+            downloadExecutor
         )
     }
 
