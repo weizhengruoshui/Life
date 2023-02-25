@@ -26,7 +26,8 @@
         <activity
             android:name=".screen.main.MainActivity"
             android:configChanges="uiMode|orientation|screenSize|screenLayout|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +37,8 @@
 
         <activity android:name=".screen.account.AccountActivity" />
 
-        <activity android:name=".screen.deeplink.DeepLinkActivity">
+        <activity android:name=".screen.deeplink.DeepLinkActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
