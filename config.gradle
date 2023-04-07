@@ -2,7 +2,7 @@ ext {
     android = [
             compileSdkVersion: 33,
             minSdkVersion    : 26,
-            targetSdkVersion : 29,
+            targetSdkVersion : 33,
             versionCode      : 1,
             versionName      : '1.0',
             buildToolsVersion: '32.0.0'
@@ -12,7 +12,7 @@ ext {
             dagger2   : '2.44.2',
             retrofit2 : '2.9.0',
             glide     : '4.14.2',
-            lifecycle : '2.4.1',
+            lifecycle : '2.5.1',
             room      : '2.4.3',
             navigation: '2.5.3'
     ]

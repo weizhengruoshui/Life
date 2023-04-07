@@ -1,6 +1,7 @@
 package com.stephen.combination.screen.webview
 
 import android.content.Intent
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import com.yaya.data.webview.WebSiteInformation
 import com.stephen.combination.databinding.ActivityWebViewBinding
@@ -19,7 +20,7 @@ class WebViewActivity : AppActivity<String, WebViewModel>() {
     }
 
     override fun initVariables() {
-        //Nothing to do.
+        registerBackPressed()
     }
 
     override fun attributeViews() {
@@ -62,11 +63,20 @@ class WebViewActivity : AppActivity<String, WebViewModel>() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        onBackPressedDispatcher.onBackPressed()
         return true
     }
 
+    @Deprecated("Deprecated in Android 13 System", ReplaceWith("registerBackPressed"))
     override fun onBackPressed() {
         supportFinishAfterTransition()
+    }
+
+    private fun registerBackPressed() {
+        onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                supportFinishAfterTransition()
+            }
+        })
     }
 }

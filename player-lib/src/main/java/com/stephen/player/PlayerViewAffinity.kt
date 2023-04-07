@@ -12,7 +12,6 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.ui.StyledPlayerView
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSource
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.EventLogger
 import com.yaya.utils.LogUtils
 
@@ -31,7 +30,7 @@ class PlayerViewAffinity(private val context: Context) {
         player?.also { exoPlayer ->
             exoPlayer.addListener(PlayerEventListener(playerStateListener))
             exoPlayer.addAnalyticsListener(PlayerAnalyticsListener())
-            exoPlayer.addAnalyticsListener(EventLogger(trackSelector))
+            exoPlayer.addAnalyticsListener(EventLogger())
             exoPlayer.seekTo(currentWindow, playbackPosition)
             exoPlayer.playWhenReady = playWhenReady
             exoPlayer.setMediaSource(createMediaSource())
@@ -96,9 +95,6 @@ class PlayerViewAffinity(private val context: Context) {
 
     private inner class PlayerEventListener(val playerStateListener: PlayerStateListener?) :
         Player.Listener {
-        override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
-            playerStateListener?.onPlayerStateChanged(playWhenReady, playbackState)
-        }
 
         override fun onPlayWhenReadyChanged(playWhenReady: Boolean, reason: Int) {
             super.onPlayWhenReadyChanged(playWhenReady, reason)
