@@ -7,6 +7,7 @@ apply plugin: 'com.google.firebase.crashlytics' //add for firebase crashlytics
 def ext = rootProject.ext
 def androidConfig = ext.android
 def libraries = ext.libraries
+
 android {
     compileSdkVersion androidConfig.compileSdkVersion
     buildToolsVersion androidConfig.buildToolsVersion
@@ -24,19 +25,17 @@ android {
             }
         }
     }
-
-    compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
-    }
-
     buildFeatures {
         viewBinding true
+        aidl true
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
     buildTypes {
         debug {
             debuggable true
@@ -67,7 +66,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     flavorDimensions 'world'
     productFlavors {
         domestic {
@@ -82,7 +80,6 @@ android {
             versionNameSuffix '-oversea'
         }
     }
-
     variantFilter { variant ->
         def names = variant.flavors*.name
 
@@ -91,7 +88,6 @@ android {
         }
     }
     namespace 'com.stephen.combination'
-
 }
 
 //if you want to add a dependency for a variant that combines a product flavor

@@ -9,15 +9,15 @@ ext {
     ]
 
     versions = [
-            dagger2   : '2.44.2',
+            dagger2   : '2.45',
             retrofit2 : '2.9.0',
-            glide     : '4.14.2',
+            glide     : '4.15.1',
             lifecycle : '2.5.1',
             room      : '2.4.3',
             navigation: '2.5.3'
     ]
     libraries = [
-            kotlin_stdlib                  : 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0',
+            kotlin_stdlib                  : 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20',
 
             //androidx
             androidx_appcompat             : 'androidx.appcompat:appcompat:1.5.1',
@@ -58,7 +58,7 @@ ext {
             retrofit2_adapter_rx_java2     : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit2",
 
             //okHttp
-            ok_http_log_interceptor        : 'com.squareup.okhttp3:logging-interceptor:4.9.0',
+            ok_http_log_interceptor        : 'com.squareup.okhttp3:logging-interceptor:4.10.0',
 
             //glide
             glide                          : "com.github.bumptech.glide:glide:$versions.glide",
