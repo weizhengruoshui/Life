@@ -7,8 +7,7 @@ def androidConfig = ext.android
 def libraries = ext.libraries
 
 android {
-    compileSdkVersion androidConfig.compileSdkVersion
-    buildToolsVersion androidConfig.buildToolsVersion
+    compileSdkVersion = androidConfig.compileSdkVersion
     defaultConfig {
         minSdkVersion androidConfig.minSdkVersion
         targetSdkVersion androidConfig.targetSdkVersion

@@ -115,10 +115,10 @@ class ScalableImageView(context: Context, attrs: AttributeSet? = null) :
         return true
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         pivotX = 0f
         pivotY = 0f
-        canvas?.run {
+        canvas.run {
             save()
             if (mScaleFactor <= 1f && checkScaleFactor)
                 resetPosition()

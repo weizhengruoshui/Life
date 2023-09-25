@@ -9,8 +9,7 @@ def androidConfig = ext.android
 def libraries = ext.libraries
 
 android {
-    compileSdkVersion androidConfig.compileSdkVersion
-    buildToolsVersion androidConfig.buildToolsVersion
+    compileSdkVersion =  androidConfig.compileSdkVersion
     defaultConfig {
         applicationId 'com.stephen.combination'
         minSdkVersion androidConfig.minSdkVersion
@@ -66,7 +65,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    flavorDimensions 'world'
+    flavorDimensions = ['world']
     productFlavors {
         domestic {
             dimension 'world'
