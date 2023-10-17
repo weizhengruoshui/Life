@@ -3,13 +3,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.firebase.crashlytics' //add for firebase crashlytics
+apply plugin: 'com.google.dagger.hilt.android'
 
 def ext = rootProject.ext
 def androidConfig = ext.android
 def libraries = ext.libraries
 
 android {
-    compileSdkVersion =  androidConfig.compileSdkVersion
+    compileSdkVersion = androidConfig.compileSdkVersion
     defaultConfig {
         applicationId 'com.stephen.combination'
         minSdkVersion androidConfig.minSdkVersion
@@ -135,6 +136,10 @@ dependencies {
     kapt libraries.dagger2_processor
     kapt libraries.dagger_android_processor
 
+    //hilt
+    implementation libraries.hilt
+    kapt libraries.hilt_compiler
+
     //test
     testImplementation libraries.junit
     androidTestImplementation libraries.androidx_junit
@@ -147,6 +152,11 @@ dependencies {
 
     //debug dependencies
     debugImplementation libraries.leakcanary
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
 }
 
 // These plugins are just for oversea flavor
