@@ -129,13 +129,6 @@ dependencies {
     //google
     implementation libraries.google_material
 
-    //dagger2
-    implementation libraries.dagger2
-    implementation libraries.dagger_android
-    implementation libraries.dagger_android_support
-    kapt libraries.dagger2_processor
-    kapt libraries.dagger_android_processor
-
     //hilt
     implementation libraries.hilt
     kapt libraries.hilt_compiler

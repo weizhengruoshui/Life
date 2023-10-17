@@ -5,8 +5,7 @@ ext {
                versionCode      : 1,
                versionName      : '1.0',]
 
-    versions = [dagger2   : '2.48.1',
-                retrofit2 : '2.9.0',
+    versions = [retrofit2 : '2.9.0',
                 glide     : '4.16.0',
                 lifecycle : '2.6.2',
                 room      : '2.5.2',
@@ -39,13 +38,6 @@ ext {
 
                  //google
                  google_material                : 'com.google.android.material:material:1.10.0',
-
-                 //dagger2
-                 dagger2                        : "com.google.dagger:dagger:$versions.dagger2",
-                 dagger2_processor              : "com.google.dagger:dagger-compiler:$versions.dagger2",
-                 dagger_android                 : "com.google.dagger:dagger-android:$versions.dagger2",
-                 dagger_android_support         : "com.google.dagger:dagger-android-support:$versions.dagger2",
-                 dagger_android_processor       : "com.google.dagger:dagger-android-processor:$versions.dagger2",
 
                  //hilt
                  hilt                           : "com.google.dagger:hilt-android:$versions.hilt",
