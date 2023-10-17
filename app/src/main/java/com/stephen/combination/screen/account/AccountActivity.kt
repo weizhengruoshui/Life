@@ -26,6 +26,6 @@ class AccountActivity : AppActivity<String, AccountViewModel>() {
     }
 
     override fun getViewModel(): AccountViewModel {
-        return ViewModelProvider(this).get(AccountViewModel::class.java)
+        return ViewModelProvider(this)[AccountViewModel::class.java]
     }
 }

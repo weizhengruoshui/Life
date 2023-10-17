@@ -8,15 +8,15 @@ ext {
     ]
 
     versions = [
-            dagger2   : '2.48',
+            dagger2   : '2.48.1',
             retrofit2 : '2.9.0',
             glide     : '4.16.0',
             lifecycle : '2.6.2',
             room      : '2.5.2',
-            navigation: '2.7.3'
+            navigation: '2.7.4'
     ]
     libraries = [
-            kotlin_stdlib                  : 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20',
+            kotlin_stdlib                  : 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22',
 
             //androidx
             androidx_appcompat             : 'androidx.appcompat:appcompat:1.6.1',
@@ -29,7 +29,7 @@ ext {
             androidx_viewpager2            : 'androidx.viewpager2:viewpager2:1.0.0',
             androidx_swipe_refresh         : 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0',
             androidx_fragment_ktx          : 'androidx.fragment:fragment-ktx:1.6.1',
-            androidx_activity_ktx          : 'androidx.activity:activity-ktx:1.7.2',
+            androidx_activity_ktx          : 'androidx.activity:activity-ktx:1.8.0',
 
             //room
             androidx_room                  : "androidx.room:room-runtime:$versions.room",
@@ -38,11 +38,11 @@ ext {
 
             //Firebase
             firebase_analytics             : 'com.google.firebase:firebase-analytics:21.3.0',
-            firebase_crashlytics           : 'com.google.firebase:firebase-crashlytics:18.4.2',
+            firebase_crashlytics           : 'com.google.firebase:firebase-crashlytics:18.4.3',
             firebase_messaging             : 'com.google.firebase:firebase-messaging:23.2.1',
 
             //google
-            google_material                : 'com.google.android.material:material:1.9.0',
+            google_material                : 'com.google.android.material:material:1.10.0',
 
             //dagger2
             dagger2                        : "com.google.dagger:dagger:$versions.dagger2",
