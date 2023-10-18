@@ -11,8 +11,9 @@ import com.stephen.combination.common.AppListFragment
 import com.stephen.combination.common.viewmodel.DataViewModelFactory
 import com.stephen.combination.databinding.FragmentVideoBinding
 import com.yaya.data.viewholder.RecyclerViewTextAndImageItem
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
+@AndroidEntryPoint
 class VideoContentFragment : AppListFragment<MutableList<RecyclerViewTextAndImageItem>, VideoContentViewModel>() {
 
     @Inject
@@ -21,11 +22,6 @@ class VideoContentFragment : AppListFragment<MutableList<RecyclerViewTextAndImag
     private var _binding: FragmentVideoBinding? = null
 
     private val binding get() = _binding!!
-
-    override fun initVariables(savedInstanceState: Bundle?) {
-        super.initVariables(savedInstanceState)
-        listFragmentComponent.inject(this)
-    }
 
     override fun getRecyclerView(): RecyclerView {
         return binding.videoList

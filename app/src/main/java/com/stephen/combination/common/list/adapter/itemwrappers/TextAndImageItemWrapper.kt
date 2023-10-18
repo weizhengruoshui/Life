@@ -12,12 +12,9 @@ class TextAndImageItemWrapper :
 
     override fun getViewHolder(
         parent: ViewGroup,
-        parentFragmentApp: AppListFragment<*, *>
     ): ViewHolderTextAndImage {
         return ViewHolderTextAndImage(
-            ViewHolderImageBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-            parentFragmentApp
-        )
+            ViewHolderImageBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun isThisType(item: Any): Boolean {

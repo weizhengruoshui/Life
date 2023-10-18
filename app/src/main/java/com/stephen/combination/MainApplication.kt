@@ -5,36 +5,18 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import com.stephen.combination.analytics.AnalyticsAgency
-import com.stephen.combination.dagger.component.AppComponent
-import com.stephen.combination.dagger.component.DaggerAppComponent
-import com.stephen.combination.dagger.module.AppModule
 import com.stephen.combination.notification.NotificationData
 import javax.inject.Inject
 
 abstract class MainApplication : Application() {
-
-    lateinit var appComponent: AppComponent
 
     @Inject
     lateinit var analyticsAgency: AnalyticsAgency
 
     override fun onCreate() {
         super.onCreate()
-        initComponent()
         initAnalytics()
         initNotificationChannel()
-    }
-
-    //use to init app component
-    open fun initComponent() {
-        appComponent = DaggerAppComponent.builder()
-            .appModule(
-                AppModule(
-                    this
-                )
-            )
-            .build()
-        appComponent.inject(this)
     }
 
     /**
@@ -46,7 +28,6 @@ abstract class MainApplication : Application() {
 
 
     private fun initNotificationChannel() {
-
         val notificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 

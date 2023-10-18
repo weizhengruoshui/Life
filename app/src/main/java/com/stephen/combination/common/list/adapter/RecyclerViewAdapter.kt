@@ -14,7 +14,7 @@ import com.yaya.data.viewholder.RecyclerViewTextItem
 import com.yaya.utils.LogUtils
 
 
-class RecyclerViewAdapter(private val parentFragmentApp: AppListFragment<*, *>) :
+class RecyclerViewAdapter :
     RecyclerView.Adapter<RecyclerViewHolder<Parcelable>>() {
 
     private val dateList = mutableListOf<Parcelable>()
@@ -68,7 +68,7 @@ class RecyclerViewAdapter(private val parentFragmentApp: AppListFragment<*, *>) 
         parent: ViewGroup,
         viewType: Int
     ): RecyclerViewHolder<Parcelable> {
-        return viewHolderManager.getViewHolder(parent, viewType, parentFragmentApp)
+        return viewHolderManager.getViewHolder(parent, viewType)
     }
 
     override fun getItemCount(): Int = dateList.size
@@ -139,10 +139,9 @@ class RecyclerViewAdapter(private val parentFragmentApp: AppListFragment<*, *>) 
 
         fun getViewHolder(
             parent: ViewGroup,
-            viewType: Int,
-            parentFragmentApp: AppListFragment<*, *>
+            viewType: Int
         ): RecyclerViewHolder<Parcelable> {
-            return itemWrappers.valueAt(viewType).getViewHolder(parent, parentFragmentApp)
+            return itemWrappers.valueAt(viewType).getViewHolder(parent)
         }
 
         fun getItemViewType(item: Any): Int {

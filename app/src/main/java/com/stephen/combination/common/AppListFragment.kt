@@ -1,6 +1,5 @@
 package com.stephen.combination.common
 
-import android.os.Bundle
 import android.os.Parcelable
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,25 +8,14 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.stephen.combination.R
 import com.stephen.combination.common.list.adapter.RecyclerViewAdapter
 import com.stephen.combination.common.viewmodel.ListViewModel
-import com.stephen.combination.dagger.component.DaggerListFragmentComponent
-import com.stephen.combination.dagger.component.ListFragmentComponent
-import com.stephen.combination.dagger.module.FragmentModule
-import com.stephen.combination.dagger.module.RecyclerViewAdapterModule
 import com.yaya.utils.LogUtils
 import javax.inject.Inject
 
 abstract class AppListFragment<itemDataType : MutableList<out Parcelable>, listViewModel : ListViewModel<itemDataType>> :
     AppFragment<itemDataType, listViewModel>() {
 
-    lateinit var listFragmentComponent: ListFragmentComponent
-
     @Inject
     lateinit var recyclerViewAdapter: RecyclerViewAdapter
-
-    override fun initVariables(savedInstanceState: Bundle?) {
-        super.initVariables(savedInstanceState)
-        initListFragmentComponent()
-    }
 
     override fun bindObserver() {
         super.bindObserver()
@@ -76,14 +64,6 @@ abstract class AppListFragment<itemDataType : MutableList<out Parcelable>, listV
         getRecyclerView().apply {
             (adapter as RecyclerViewAdapter).loadMoreItems(data.toMutableList())
         }
-    }
-
-    private fun initListFragmentComponent() {
-        listFragmentComponent = DaggerListFragmentComponent.builder()
-            .activityComponent(parentActivity.activityComponent)
-            .fragmentModule(FragmentModule(this))
-            .recyclerViewAdapterModule(RecyclerViewAdapterModule(this))
-            .build()
     }
 
     abstract fun getRecyclerView(): RecyclerView

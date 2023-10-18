@@ -10,7 +10,7 @@ ext {
                 lifecycle : '2.6.2',
                 room      : '2.5.2',
                 navigation: '2.7.4',
-                hilt      : '2.44']
+                hilt      : '2.48.1']
     libraries = [kotlin_stdlib                  : 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22',
 
                  //androidx

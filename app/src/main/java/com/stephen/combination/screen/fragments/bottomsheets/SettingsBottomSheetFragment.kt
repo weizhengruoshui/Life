@@ -5,11 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.stephen.combination.dagger.module.FragmentModule
-import com.stephen.combination.databinding.FragmentSettingsBottomSheetBinding
-import com.stephen.combination.common.AppActivity
 import com.stephen.combination.common.manager.AppActivityRouter
-import com.stephen.combination.dagger.component.DaggerFragmentComponent
+import com.stephen.combination.databinding.FragmentSettingsBottomSheetBinding
 import com.stephen.combination.notification.NotificationData
 import com.stephen.combination.notification.RegularNotificationFactory
 import com.stephen.combination.notification.WithParentNotification
@@ -30,27 +27,10 @@ class SettingsBottomSheetFragment : BottomSheetDialogFragment() {
     private val binding get() = _binding!!
 
     companion object {
-        val TAG = "SettingsBottomSheetFragment"
+        const val TAG = "SettingsBottomSheetFragment"
         fun newInstance(): SettingsBottomSheetFragment {
             return SettingsBottomSheetFragment()
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initFragmentComponent()
-    }
-
-    private fun initFragmentComponent() {
-        val fragmentComponent = DaggerFragmentComponent.builder()
-            .activityComponent((activity as AppActivity<*, *>).activityComponent)
-            .fragmentModule(
-                FragmentModule(
-                    this
-                )
-            )
-            .build()
-        fragmentComponent.inject(this)
     }
 
     override fun onCreateView(

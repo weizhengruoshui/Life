@@ -1,8 +1,8 @@
-package com.stephen.combination.dagger.module
+package com.stephen.combination.hilt
 
 import android.app.Application
+import android.content.Context
 import com.stephen.combination.analytics.AnalyticsAgency
-import com.stephen.combination.dagger.scope.AppScope
 import com.yaya.data.DataRepository
 import com.yaya.data.database.CombinationDatabase
 import com.yaya.data.database.LocalRepository
@@ -11,35 +11,40 @@ import com.yaya.data.remote.retrofit2.RetrofitClient
 import com.yaya.utils.ToastUtils
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
-class AppModule(private val application: Application) {
+@InstallIn(SingletonComponent::class)
+class AppModule {
 
-    @AppScope
+    @Singleton
     @Provides
     fun provideAnalyticsAgency(): AnalyticsAgency {
         return AnalyticsAgency()
     }
 
-    @AppScope
+    @Singleton
     @Provides
-    fun provideCombinationToast(): ToastUtils {
+    fun provideCombinationToast(@ApplicationContext application: Context): ToastUtils {
         return ToastUtils(application)
     }
 
-    @AppScope
+    @Singleton
     @Provides
     fun provideRetrofitClient(): RetrofitClient {
         return RetrofitClient()
     }
 
-    @AppScope
+    @Singleton
     @Provides
-    fun provideCombinationDatabase(): CombinationDatabase {
+    fun provideCombinationDatabase(application: Application): CombinationDatabase {
         return CombinationDatabase.getInstance(application)
     }
 
-    @AppScope
+    @Singleton
     @Provides
     fun provideJokeApiAction(
         retrofitClient: RetrofitClient,
@@ -48,13 +53,13 @@ class AppModule(private val application: Application) {
         return RemoteRepository(retrofitClient, combinationDatabase)
     }
 
-    @AppScope
+    @Singleton
     @Provides
     fun provideLocalRepository(combinationDatabase: CombinationDatabase): LocalRepository {
         return LocalRepository(combinationDatabase)
     }
 
-    @AppScope
+    @Singleton
     @Provides
     fun provideDataRepository(
         remoteRepository: RemoteRepository,

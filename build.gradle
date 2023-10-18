@@ -14,11 +14,8 @@ buildscript {
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0'
         classpath 'com.google.gms:google-services:4.4.0' // Google Services plugin
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.9'  // Crashlytics plugin
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.48.1' // hilt plugin
     }
-}
-
-plugins {
-    id 'com.google.dagger.hilt.android' version '2.44' apply false
 }
 
 apply from: "config.gradle"

@@ -1,30 +1,21 @@
 package com.stephen.combination.common.list.holder.view
 
 import com.stephen.combination.common.AppListFragment
-import com.stephen.combination.common.list.holder.viewmodel.ViewModelText
 import com.stephen.combination.databinding.ViewHolderTextBinding
 import com.yaya.data.viewholder.RecyclerViewTextItem
-import javax.inject.Inject
 
 class ViewHolderText(
     private val viewHolderTextBinding: ViewHolderTextBinding,
-    parentFragmentApp: AppListFragment<*, *>
-) : RecyclerViewHolder<RecyclerViewTextItem>(viewHolderTextBinding.root, parentFragmentApp) {
+) : RecyclerViewHolder<RecyclerViewTextItem>(viewHolderTextBinding.root) {
 
-    @Inject
-    lateinit var viewModelText: ViewModelText
 
     override fun bindData(data: RecyclerViewTextItem) {
-        viewHolderComponent.inject(this)
-        viewModelText.recyclerViewTextItem = data
-        populateView()
+        populateView(data)
     }
 
-    private fun populateView() {
-        viewModelText.apply {
-            viewHolderTextBinding.textViewHolderContent.text = recyclerViewTextItem?.text
-            viewHolderTextBinding.textViewHolderUpdateTime.text = recyclerViewTextItem?.updateTime
-        }
+    private fun populateView(data: RecyclerViewTextItem) {
+        viewHolderTextBinding.textViewHolderContent.text = data.text
+        viewHolderTextBinding.textViewHolderUpdateTime.text = data.updateTime
     }
 
     override fun onViewRecycled() {

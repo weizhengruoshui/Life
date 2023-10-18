@@ -10,8 +10,9 @@ import com.stephen.combination.common.viewmodel.DataViewModelFactory
 import com.stephen.combination.databinding.FragmentAlmanacBinding
 import com.yaya.data.almanac.AlmanacDay
 import com.yaya.data.almanac.AlmanacHour
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
+@AndroidEntryPoint
 class AlmanacFragment :
     AppFragment<Pair<AlmanacDay?, MutableList<AlmanacHour>?>, AlmanacViewModel>() {
 
@@ -21,11 +22,6 @@ class AlmanacFragment :
     private var _binding: FragmentAlmanacBinding? = null
 
     private val binding get() = _binding!!
-
-    override fun initVariables(savedInstanceState: Bundle?) {
-        super.initVariables(savedInstanceState)
-        provideFragmentComponent().inject(this)
-    }
 
     override fun onCreateRootView(
         inflater: LayoutInflater,

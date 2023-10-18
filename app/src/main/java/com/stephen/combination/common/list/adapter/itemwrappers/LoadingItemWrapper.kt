@@ -11,7 +11,6 @@ import com.yaya.data.LoadingData
 class LoadingItemWrapper : ItemWrapper<LoadingData> {
     override fun getViewHolder(
         parent: ViewGroup,
-        parentFragmentApp: AppListFragment<*, *>
     ): RecyclerViewHolder<LoadingData> {
         return LoadingViewHolder(
             ViewHolderLoadingBinding.inflate(
@@ -19,7 +18,6 @@ class LoadingItemWrapper : ItemWrapper<LoadingData> {
                 parent,
                 false
             ),
-            parentFragmentApp
         )
     }
 
