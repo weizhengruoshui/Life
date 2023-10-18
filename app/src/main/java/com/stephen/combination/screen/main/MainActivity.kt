@@ -10,13 +10,14 @@ import com.stephen.combination.common.AppActivity
 import com.stephen.combination.databinding.ActivityMainBinding
 import com.stephen.combination.screen.fragments.bottomsheets.SettingsBottomSheetFragment
 import com.yaya.utils.LogUtils
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppActivity<String, MainViewModel>() {
 
     private lateinit var binding: ActivityMainBinding
 
     override fun initVariables() {
-        activityComponent.inject(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
     }
 

@@ -10,27 +10,19 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.stephen.combination.common.AppListFragment
 import com.stephen.combination.common.viewmodel.DataViewModelFactory
 import com.stephen.combination.databinding.FragmentVideoListBinding
-import com.stephen.player.PlayerViewAffinity
 import com.yaya.data.viewholder.RecyclerViewVideoItem
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
+@AndroidEntryPoint
 class VideoListFragment :
     AppListFragment<MutableList<RecyclerViewVideoItem>, VideoListViewModel>() {
 
     @Inject
     lateinit var dataViewModelFactory: DataViewModelFactory
 
-    @Inject
-    lateinit var playerViewAffinity: PlayerViewAffinity
-
     private var _binding: FragmentVideoListBinding? = null
 
     private val binding get() = _binding!!
-
-    override fun initVariables(savedInstanceState: Bundle?) {
-        super.initVariables(savedInstanceState)
-        listFragmentComponent.inject(this)
-    }
 
     override fun bindObserver() {
         super.bindObserver()

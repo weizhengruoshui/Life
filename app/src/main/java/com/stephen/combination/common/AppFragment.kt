@@ -7,10 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.stephen.combination.common.viewmodel.BaseViewModel
-import com.stephen.combination.dagger.component.DaggerFragmentComponent
-import com.stephen.combination.dagger.component.FragmentComponent
-import com.stephen.combination.dagger.module.FragmentModule
-import com.yaya.utils.LogUtils
 
 /**
  * @property dataType is the fragment's base data.
@@ -53,17 +49,6 @@ abstract class AppFragment<dataType, viewModel : BaseViewModel<dataType>> :
     override fun onDestroy() {
         fragmentViewModel.disposeAllDisposables()
         super.onDestroy()
-    }
-
-    fun provideFragmentComponent(): FragmentComponent {
-        return DaggerFragmentComponent.builder()
-            .activityComponent((activity as AppActivity<*, *>).activityComponent)
-            .fragmentModule(
-                FragmentModule(
-                    this
-                )
-            )
-            .build()
     }
 
     open fun bindObserver() {

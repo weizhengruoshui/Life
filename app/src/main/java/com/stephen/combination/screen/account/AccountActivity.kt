@@ -4,14 +4,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.stephen.combination.R
 import com.stephen.combination.common.AppActivity
 import com.stephen.combination.databinding.ActivityAccountBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AccountActivity : AppActivity<String, AccountViewModel>() {
 
     private lateinit var binding: ActivityAccountBinding
-
-    override fun initVariables() {
-        activityComponent.inject(this)
-    }
 
     override fun attributeViews() {
         binding = ActivityAccountBinding.inflate(layoutInflater)

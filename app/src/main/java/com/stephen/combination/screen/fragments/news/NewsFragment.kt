@@ -11,8 +11,9 @@ import com.stephen.combination.common.viewmodel.DataViewModelFactory
 import com.yaya.data.viewholder.RecyclerViewTextAndImageItem
 import com.stephen.combination.databinding.FragmentNewsBinding
 import com.stephen.combination.common.AppListFragment
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
+@AndroidEntryPoint
 class NewsFragment : AppListFragment<MutableList<RecyclerViewTextAndImageItem>, NewsViewModel>() {
 
     @Inject
@@ -21,11 +22,6 @@ class NewsFragment : AppListFragment<MutableList<RecyclerViewTextAndImageItem>, 
     private var _binding: FragmentNewsBinding? = null
 
     private val binding get() = _binding!!
-
-    override fun initVariables(savedInstanceState: Bundle?) {
-        super.initVariables(savedInstanceState)
-        listFragmentComponent.inject(this)
-    }
 
     override fun onCreateRootView(
         inflater: LayoutInflater,

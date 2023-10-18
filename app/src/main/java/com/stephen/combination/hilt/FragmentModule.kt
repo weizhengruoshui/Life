@@ -1,16 +1,18 @@
-package com.stephen.combination.dagger.module
+package com.stephen.combination.hilt
 
-import androidx.fragment.app.Fragment
 import com.stephen.combination.common.viewmodel.DataViewModelFactory
-import com.stephen.combination.dagger.scope.FragmentScope
 import com.yaya.data.DataRepository
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.FragmentComponent
+import dagger.hilt.android.scopes.FragmentScoped
 
 @Module
-class FragmentModule(private val fragment: Fragment) {
+@InstallIn(FragmentComponent::class)
+class FragmentModule {
 
-    @FragmentScope
+    @FragmentScoped
     @Provides
     fun provideDataRepositoryViewModelFactory(dataRepository: DataRepository): DataViewModelFactory {
         return DataViewModelFactory(dataRepository)

@@ -7,8 +7,7 @@ import com.yaya.data.LoadingData
 
 class LoadingViewHolder(
     private val viewBinding: ViewHolderLoadingBinding,
-    parentFragmentApp: AppListFragment<*, *>
-) : RecyclerViewHolder<LoadingData>(viewBinding.root, parentFragmentApp) {
+) : RecyclerViewHolder<LoadingData>(viewBinding.root) {
 
     override fun bindData(data: LoadingData) {
         viewBinding.loadingViewHolderProgressBar.visible()

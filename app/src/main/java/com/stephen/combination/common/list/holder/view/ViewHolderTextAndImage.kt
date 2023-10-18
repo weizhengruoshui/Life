@@ -1,74 +1,57 @@
 package com.stephen.combination.common.list.holder.view
 
 import android.view.View
-import androidx.core.app.ActivityOptionsCompat
 import com.stephen.combination.R
-import com.stephen.combination.common.AppListFragment
-import com.stephen.combination.common.list.holder.viewmodel.ViewModelTextAndImage
 import com.stephen.combination.common.manager.AppActivityRouter
 import com.stephen.combination.databinding.ViewHolderImageBinding
 import com.yaya.data.viewholder.RecyclerViewTextAndImageItem
-import com.yaya.image.ImageLoader
-import javax.inject.Inject
+import com.yaya.data.webview.WebSiteInformation
+import com.yaya.utils.LogUtils
 
 class ViewHolderTextAndImage(
     private val viewHolderImageBinding: ViewHolderImageBinding,
-    private val parentFragmentApp: AppListFragment<*, *>
 ) : RecyclerViewHolder<RecyclerViewTextAndImageItem>(
-    viewHolderImageBinding.root,
-    parentFragmentApp
+    viewHolderImageBinding.root
 ) {
-
-    @Inject
-    lateinit var viewModelTextAndImage: ViewModelTextAndImage
+    private var itemData: RecyclerViewTextAndImageItem? = null
 
     override fun bindData(data: RecyclerViewTextAndImageItem) {
-        viewHolderComponent.inject(this)
-        viewModelTextAndImage.recyclerViewTextAndImageItem = data
+        itemData = data
         populateView()
     }
 
     private fun onClickEvent(view: View) {
         when (view.id) {
             R.id.image_view_holder_title ->
-                viewModelTextAndImage.generateWebsiteInfo()?.also { webSiteInformation ->
-                    AppActivityRouter.startWebViewActivity(
-                        parentFragmentApp.context,
-                        webSiteInformation,
-                        ActivityOptionsCompat.makeSceneTransitionAnimation(
-                            parentFragmentApp.parentActivity,
-                            viewHolderImageBinding.imageViewHolderImage,
-                            getString(R.string.transition_view_holder_image)
-                        )
-                    )
-                }
+                itemData?.run {
+                    WebSiteInformation(link, authorName, imageUrl)
+                } //todo jump to web activity here
+
             R.id.image_view_holder_image -> {
-                com.yaya.utils.LogUtils.logD(javaClass.simpleName, "click on image")
+                LogUtils.logD(javaClass.simpleName, "click on image")
                 AppActivityRouter.startScalableImageActivity(
-                    parentFragmentApp.context,
-                    viewModelTextAndImage.getFirstImageUrl()
+                    view.context,
+                    itemData?.imageUrl
                 )
             }
-            else -> com.yaya.utils.LogUtils.logD(javaClass.simpleName, "Didn't handle ${view.id}")
+
+            else -> LogUtils.logD(javaClass.simpleName, "Didn't handle ${view.id}")
         }
     }
 
     private fun populateView() {
-        ImageLoader.loadImage(
-            parentFragmentApp,
-            viewModelTextAndImage.getFirstImageUrl(),
-            viewHolderImageBinding.imageViewHolderImage
-        )
+        //todo show the pic here
+
         viewHolderImageBinding.imageViewHolderAuthor.apply {
-            text = viewModelTextAndImage.recyclerViewTextAndImageItem?.authorName
+            text = itemData?.authorName
             setOnClickListener(this@ViewHolderTextAndImage::onClickEvent)
         }
         viewHolderImageBinding.imageViewHolderTime.apply {
-            text = viewModelTextAndImage.recyclerViewTextAndImageItem?.date
+            text = itemData?.date
             setOnClickListener(this@ViewHolderTextAndImage::onClickEvent)
         }
         viewHolderImageBinding.imageViewHolderTitle.apply {
-            text = viewModelTextAndImage.recyclerViewTextAndImageItem?.title
+            text = itemData?.title
             setOnClickListener(this@ViewHolderTextAndImage::onClickEvent)
         }
     }

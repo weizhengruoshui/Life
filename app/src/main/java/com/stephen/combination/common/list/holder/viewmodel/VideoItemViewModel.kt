@@ -6,12 +6,12 @@ import com.yaya.data.viewholder.RecyclerViewVideoItem
 import com.stephen.player.PlayerConfiguration
 import com.stephen.player.PlayerViewAffinity
 
-class ViewModelVideo(private val playerViewAffinity: PlayerViewAffinity) : RecyclerViewModel(),
+class VideoItemViewModel(private val playerViewAffinity: PlayerViewAffinity):
     PlayerViewAffinity.PlayerStateListener {
 
     var recyclerViewVideoItem: RecyclerViewVideoItem? = null
 
-    var updateVideoItemPlayerListener: UpdateVideoItemPlayerListener? = null
+    private var updateVideoItemPlayerListener: UpdateVideoItemPlayerListener? = null
 
     fun playVideo(
         styledPlayerView: StyledPlayerView,

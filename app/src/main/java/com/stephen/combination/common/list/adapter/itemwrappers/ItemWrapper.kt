@@ -12,7 +12,6 @@ interface ItemWrapper<I : Parcelable> {
 
     fun getViewHolder(
         parent: ViewGroup,
-        parentFragmentApp: AppListFragment<*, *>
     ): RecyclerViewHolder<I>
 
     fun isThisType(item: Any): Boolean

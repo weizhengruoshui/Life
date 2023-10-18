@@ -11,8 +11,9 @@ import com.stephen.combination.common.viewmodel.DataViewModelFactory
 import com.yaya.data.viewholder.RecyclerViewTextItem
 import com.stephen.combination.databinding.FragmentJokesBinding
 import com.stephen.combination.common.AppListFragment
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
+@AndroidEntryPoint
 class JokesFragmentApp : AppListFragment<MutableList<RecyclerViewTextItem>, JokesViewModel>() {
 
     @Inject
@@ -21,11 +22,6 @@ class JokesFragmentApp : AppListFragment<MutableList<RecyclerViewTextItem>, Joke
     private var _binding: FragmentJokesBinding? = null
 
     private val binding get() = _binding!!
-
-    override fun initVariables(savedInstanceState: Bundle?) {
-        super.initVariables(savedInstanceState)
-        listFragmentComponent.inject(this)
-    }
 
     override fun onCreateRootView(
         inflater: LayoutInflater,

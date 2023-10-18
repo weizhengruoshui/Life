@@ -4,11 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.stephen.combination.MainApplication
 import com.stephen.combination.common.viewmodel.BaseViewModel
-import com.stephen.combination.dagger.component.ActivityComponent
-import com.stephen.combination.dagger.component.DaggerActivityComponent
-import com.stephen.combination.dagger.module.ActivityModule
 
 /**
  * @property dataType is the activity's base data type
@@ -18,28 +14,15 @@ import com.stephen.combination.dagger.module.ActivityModule
 @SuppressLint("Registered")
 abstract class AppActivity<dataType, viewModel : BaseViewModel<dataType>> : AppCompatActivity() {
 
-    lateinit var activityComponent: ActivityComponent
 
     private val activityViewModel: viewModel by lazy { getViewModel() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        initComponent()
         super.onCreate(savedInstanceState)
         initVariables()
         bindObserver()
         loadData()
         attributeViews()
-    }
-
-    open fun initComponent() {
-        activityComponent = DaggerActivityComponent.builder()
-            .appComponent((application as MainApplication).appComponent)
-            .activityModule(
-                ActivityModule(
-                    this
-                )
-            )
-            .build()
     }
 
     open fun bindObserver() {
@@ -66,7 +49,9 @@ abstract class AppActivity<dataType, viewModel : BaseViewModel<dataType>> : AppC
         super.onDestroy()
     }
 
-    abstract fun initVariables()
+    open fun initVariables() {
+        // implemented by child
+    }
 
     abstract fun attributeViews()
 
