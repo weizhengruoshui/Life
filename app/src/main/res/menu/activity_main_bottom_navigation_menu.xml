@@ -9,15 +9,18 @@
     <item
         android:id="@+id/bottom_videos"
         android:icon="@drawable/ic_videos_black"
-        android:title="@string/videos" />
+        android:title="@string/videos"
+        android:visible="false" />
 
     <item
         android:id="@+id/bottom_joke"
         android:icon="@drawable/ic_jokes_black"
-        android:title="@string/jokes" />
+        android:title="@string/jokes"
+        android:visible="false" />
 
     <item
         android:id="@+id/bottom_almanac"
         android:icon="@drawable/ic_almanac_black"
-        android:title="@string/almanac" />
+        android:title="@string/almanac"
+        android:visible="false" />
 </menu>
