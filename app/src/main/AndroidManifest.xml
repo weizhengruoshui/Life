@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <permission
-        android:name="com.stephen.combination.APP_AIDL"
+        android:name="com.yaya.life.APP_AIDL"
         android:protectionLevel="normal" />
 
     <application

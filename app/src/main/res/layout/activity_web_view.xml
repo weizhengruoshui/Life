@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.stephen.combination.screen.webview.WebViewActivity">
+    tools:context="com.yaya.life.screen.webview.WebViewActivity">
 
     <include
         android:id="@+id/web_app_bar_layout"

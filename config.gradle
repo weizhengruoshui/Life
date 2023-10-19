@@ -32,9 +32,10 @@ ext {
                  androidx_room_rxjave2          : "androidx.room:room-rxjava2:$versions.room",
 
                  //Firebase
-                 firebase_analytics             : 'com.google.firebase:firebase-analytics:21.3.0',
-                 firebase_crashlytics           : 'com.google.firebase:firebase-crashlytics:18.4.3',
-                 firebase_messaging             : 'com.google.firebase:firebase-messaging:23.2.1',
+                 firebase_bom                   : 'com.google.firebase:firebase-bom:32.4.0',
+                 firebase_analytics             : 'com.google.firebase:firebase-analytics',
+                 firebase_crashlytics           : 'com.google.firebase:firebase-crashlytics',
+                 firebase_messaging             : 'com.google.firebase:firebase-messaging',
 
                  //google
                  google_material                : 'com.google.android.material:material:1.10.0',
