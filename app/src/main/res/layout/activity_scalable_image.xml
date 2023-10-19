@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.stephen.combination.widgets.ScalableImageView
+    <com.yaya.life.widgets.ScalableImageView
         android:id="@+id/scalable_image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

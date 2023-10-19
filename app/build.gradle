@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.firebase.crashlytics' //add for firebase crashlytics
 apply plugin: 'com.google.dagger.hilt.android'
+// These plugins are just for oversea flavor
+//apply plugin: 'com.google.gms.google-services'//add for firebase service
 
 def ext = rootProject.ext
 def androidConfig = ext.android
@@ -12,7 +14,7 @@ def libraries = ext.libraries
 android {
     compileSdkVersion = androidConfig.compileSdkVersion
     defaultConfig {
-        applicationId 'com.stephen.combination'
+        applicationId 'com.yaya.life'
         minSdkVersion androidConfig.minSdkVersion
         targetSdkVersion androidConfig.targetSdkVersion
         versionCode androidConfig.versionCode
@@ -41,12 +43,6 @@ android {
             debuggable true
             applicationIdSuffix '.debug'
             versionNameSuffix '-debug'
-        }
-
-        canary {
-            initWith release
-            applicationIdSuffix '.canary'
-            versionNameSuffix '-canary'
         }
 
         release {
@@ -80,14 +76,16 @@ android {
             versionNameSuffix '-oversea'
         }
     }
-    variantFilter { variant ->
-        def names = variant.flavors*.name
 
-        if (names.contains("domestic")) {
-            setIgnore(true)
-        }
-    }
-    namespace 'com.stephen.combination'
+    // filter build variant
+//    variantFilter { variant ->
+//        def names = variant.flavors*.name
+//
+//        if (names.contains("domestic")) {
+//            setIgnore(true)
+//        }
+//    }
+    namespace 'com.yaya.life'
 }
 
 //if you want to add a dependency for a variant that combines a product flavor
@@ -139,6 +137,7 @@ dependencies {
     androidTestImplementation libraries.androidx_espresso_core
 
     //oversea dependencies
+    overseaImplementation platform(libraries.firebase_bom)
     overseaImplementation libraries.firebase_analytics
     overseaImplementation libraries.firebase_crashlytics
     overseaImplementation libraries.firebase_messaging
@@ -151,7 +150,3 @@ dependencies {
 kapt {
     correctErrorTypes true
 }
-
-// These plugins are just for oversea flavor
-apply plugin: 'com.google.gms.google-services'//add for firebase service
-
