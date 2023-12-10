@@ -35,6 +35,9 @@ android {
         }
     }
     namespace 'com.yaya.data'
+    buildFeatures {
+        buildConfig true
+    }
 }
 
 dependencies {

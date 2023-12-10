@@ -32,6 +32,9 @@ android {
         }
     }
     namespace 'com.yaya.utils'
+    buildFeatures {
+        buildConfig true
+    }
 }
 
 dependencies {

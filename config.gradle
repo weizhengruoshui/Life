@@ -8,10 +8,10 @@ ext {
     versions = [retrofit2 : '2.9.0',
                 glide     : '4.16.0',
                 lifecycle : '2.6.2',
-                room      : '2.5.2',
+                room      : '2.6.1',
                 navigation: '2.7.4',
-                hilt      : '2.48.1']
-    libraries = [kotlin_stdlib                  : 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22',
+                hilt      : '2.49']
+    libraries = [kotlin_stdlib                  : 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.21',
 
                  //androidx
                  androidx_appcompat             : 'androidx.appcompat:appcompat:1.6.1',
@@ -23,7 +23,7 @@ ext {
                  androidx_lifecycle_common_java8: "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle",
                  androidx_viewpager2            : 'androidx.viewpager2:viewpager2:1.0.0',
                  androidx_swipe_refresh         : 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0',
-                 androidx_fragment_ktx          : 'androidx.fragment:fragment-ktx:1.6.1',
+                 androidx_fragment_ktx          : 'androidx.fragment:fragment-ktx:1.6.2',
                  androidx_activity_ktx          : 'androidx.activity:activity-ktx:1.8.0',
 
                  //room
@@ -50,7 +50,7 @@ ext {
                  retrofit2_adapter_rx_java2     : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit2",
 
                  //okHttp
-                 ok_http_log_interceptor        : 'com.squareup.okhttp3:logging-interceptor:4.10.0',
+                 ok_http_log_interceptor        : 'com.squareup.okhttp3:logging-interceptor:4.12.0',
 
                  //glide
                  glide                          : "com.github.bumptech.glide:glide:$versions.glide",
