@@ -1,3 +1,4 @@
+//file:noinspection DependencyNotationArgument
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
@@ -10,7 +11,7 @@ def androidConfig = ext.android
 def libraries = ext.libraries
 
 android {
-    compileSdkVersion androidConfig.compileSdkVersion
+    compileSdkVersion = androidConfig.compileSdkVersion
     defaultConfig {
         minSdkVersion androidConfig.minSdkVersion
         targetSdkVersion androidConfig.targetSdkVersion
