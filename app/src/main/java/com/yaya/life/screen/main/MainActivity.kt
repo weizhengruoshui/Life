@@ -1,38 +1,33 @@
 package com.yaya.life.screen.main
 
 import android.content.res.Configuration
+import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.yaya.life.R
-import com.yaya.life.common.AppActivity
+import com.yaya.life.basic.AppActivity
 import com.yaya.life.databinding.ActivityMainBinding
-import com.yaya.life.screen.fragments.bottomsheets.SettingsBottomSheetFragment
+import com.yaya.life.screen.bottomsheets.SettingsBottomSheetFragment
 import com.yaya.utils.LogUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppActivity<String, MainViewModel>() {
+class MainActivity : AppActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    override fun initVariables() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-    }
-
-    override fun attributeViews() {
         setContentView(binding.root)
 
+        setupActionBar()
         val navController = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment)
             ?.findNavController() ?: return
-        setupActionBar()
         setupBottomMenu(navController)
-    }
-
-    override fun getViewModel(): MainViewModel {
-        return ViewModelProvider(this).get(MainViewModel::class.java)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -52,10 +47,6 @@ class MainActivity : AppActivity<String, MainViewModel>() {
             )
         }
         LogUtils.logD(javaClass.simpleName, "onConfigurationChanged")
-    }
-
-    override fun populateData(data: String) {
-        //Don't need to load data.
     }
 
     private fun setupActionBar() {

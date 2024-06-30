@@ -7,22 +7,8 @@
 
     <fragment
         android:id="@+id/bottom_news"
-        android:name="com.yaya.life.screen.fragments.news.NewsFragment"
+        android:name="com.yaya.life.screen.list.AppListFragment"
         android:label="NewsFragment"
-        tools:layout="@layout/fragment_news" />
-    <fragment
-        android:id="@+id/bottom_videos"
-        android:name="com.yaya.life.screen.fragments.video.list.VideoListFragment"
-        android:label="VideoListFragment"
-        tools:layout="@layout/fragment_video" />
-    <fragment
-        android:id="@+id/bottom_joke"
-        android:name="com.yaya.life.screen.fragments.jokes.JokesFragmentApp"
-        android:label="JokesFragment"
-        tools:layout="@layout/fragment_jokes" />
-    <fragment
-        android:id="@+id/bottom_almanac"
-        android:name="com.yaya.life.screen.fragments.almanac.AlmanacFragment"
-        android:label="AlmanacFragment"
-        tools:layout="@layout/fragment_almanac" />
+        tools:layout="@layout/fragment_app_list" />
+
 </navigation>

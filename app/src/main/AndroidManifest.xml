@@ -6,7 +6,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!--  Add WAKE LOCK for Firebase  -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -15,7 +14,6 @@
         android:protectionLevel="normal" />
 
     <application
-        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
@@ -35,32 +33,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".screen.account.AccountActivity" />
-
-        <activity android:name=".screen.deeplink.DeepLinkActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="www.family.com"
-                    android:scheme="https" />
-            </intent-filter>
-        </activity>
-
         <activity android:name=".screen.scalableimage.ScalableImageActivity" />
 
         <activity
             android:name=".screen.webview.WebViewActivity"
             android:parentActivityName=".screen.main.MainActivity" />
-        <activity
-            android:name=".notification.NotificationActivity"
-            android:excludeFromRecents="true"
-            android:launchMode="singleTask"
-            android:taskAffinity="" />
 
         <service
             android:name=".service.AidlService"
