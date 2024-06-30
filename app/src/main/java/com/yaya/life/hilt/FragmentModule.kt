@@ -1,6 +1,6 @@
 package com.yaya.life.hilt
 
-import com.yaya.life.common.viewmodel.DataViewModelFactory
+import com.yaya.life.basic.viewmodel.DataViewModelFactory
 import com.yaya.data.DataRepository
 import dagger.Module
 import dagger.Provides

@@ -4,8 +4,8 @@ import android.app.Application
 import android.content.Context
 import com.yaya.life.analytics.AnalyticsAgency
 import com.yaya.data.DataRepository
-import com.yaya.data.database.CombinationDatabase
-import com.yaya.data.database.LocalRepository
+import com.yaya.data.local.CombinationDatabase
+import com.yaya.data.local.LocalRepository
 import com.yaya.data.remote.RemoteRepository
 import com.yaya.data.remote.retrofit2.RetrofitClient
 import com.yaya.utils.ToastUtils

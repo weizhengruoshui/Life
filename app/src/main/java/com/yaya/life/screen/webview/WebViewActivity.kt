@@ -1,15 +1,15 @@
 package com.yaya.life.screen.webview
 
 import android.content.Intent
+import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
-import androidx.lifecycle.ViewModelProvider
 import com.yaya.data.webview.WebSiteInformation
-import com.yaya.life.databinding.ActivityWebViewBinding
-import com.yaya.life.common.AppActivity
 import com.yaya.image.ImageLoader
+import com.yaya.life.basic.AppActivity
+import com.yaya.life.databinding.ActivityWebViewBinding
 import java.net.URLDecoder
 
-class WebViewActivity : AppActivity<String, WebViewModel>() {
+class WebViewActivity : AppActivity() {
 
     private lateinit var binding: ActivityWebViewBinding
 
@@ -19,21 +19,20 @@ class WebViewActivity : AppActivity<String, WebViewModel>() {
         }
     }
 
-    override fun initVariables() {
-        registerBackPressed()
-    }
-
-    override fun attributeViews() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         binding = ActivityWebViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.webAppBarLayout.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.webView.webViewClient = CustomizedWebViewClient()
         binding.webView.webChromeClient = CustomizedChromeClient()
+        registerBackPressed()
+        populateData()
     }
 
-    override fun populateData(data: String) {
-        val linkInfo: WebSiteInformation? = intent.getParcelableExtra(data)
+    private fun populateData() {
+        val linkInfo: WebSiteInformation? = intent.getParcelableExtra(WebViewModel.LINK_INFO)
         linkInfo?.also { webSiteInformation ->
             supportActionBar?.title = webSiteInformation.siteTitle
             ImageLoader.loadImage(
@@ -58,18 +57,9 @@ class WebViewActivity : AppActivity<String, WebViewModel>() {
         }
     }
 
-    override fun getViewModel(): WebViewModel {
-        return ViewModelProvider(this).get(WebViewModel::class.java)
-    }
-
     override fun onSupportNavigateUp(): Boolean {
         onBackPressedDispatcher.onBackPressed()
         return true
-    }
-
-    @Deprecated("Deprecated in Android 13 System", ReplaceWith("registerBackPressed"))
-    override fun onBackPressed() {
-        supportFinishAfterTransition()
     }
 
     private fun registerBackPressed() {

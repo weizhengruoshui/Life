@@ -1,6 +1,6 @@
 package com.yaya.life.hilt
 
-import com.yaya.life.common.list.adapter.RecyclerViewAdapter
+import com.yaya.life.screen.list.adapter.RecyclerViewAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

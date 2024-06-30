@@ -1,14 +1,10 @@
 package com.yaya.life.screen.scalableimage
 
-import com.yaya.life.common.viewmodel.BaseViewModel
+import com.yaya.life.basic.viewmodel.BaseViewModel
 
-class ScalableImageModel : BaseViewModel<String>() {
+class ScalableImageModel : BaseViewModel() {
 
     companion object {
         const val IMAGE_URL = "image url"
-    }
-
-    override fun loadData() {
-        data.value = IMAGE_URL
     }
 }
