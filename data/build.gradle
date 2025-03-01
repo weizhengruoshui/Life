@@ -16,7 +16,6 @@ android {
         minSdkVersion androidConfig.minSdkVersion
         targetSdkVersion androidConfig.targetSdkVersion
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
     compileOptions {
@@ -67,8 +66,4 @@ dependencies {
     //okHttp
     implementation libraries.ok_http_log_interceptor
 
-    // test
-    testImplementation libraries.junit
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

@@ -15,7 +15,6 @@ android {
         minSdkVersion androidConfig.minSdkVersion
         targetSdkVersion androidConfig.targetSdkVersion
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
     compileOptions {
@@ -49,8 +48,4 @@ dependencies {
     implementation libraries.glide
     kapt libraries.glide_compiler
 
-    // test
-    testImplementation libraries.junit
-    androidTestImplementation libraries.androidx_junit
-    androidTestImplementation libraries.androidx_espresso_core
 }

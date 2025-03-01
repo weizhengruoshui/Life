@@ -13,7 +13,6 @@ android {
         minSdkVersion androidConfig.minSdkVersion
         targetSdkVersion androidConfig.targetSdkVersion
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
     compileOptions {
@@ -43,8 +42,4 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation libraries.kotlin_stdlib
 
-    // test
-    testImplementation libraries.junit
-    androidTestImplementation libraries.androidx_junit
-    androidTestImplementation libraries.androidx_espresso_core
 }

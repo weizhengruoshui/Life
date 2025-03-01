@@ -133,11 +133,6 @@ dependencies {
     implementation libraries.hilt
     kapt libraries.hilt_compiler
 
-    //test
-    testImplementation libraries.junit
-    androidTestImplementation libraries.androidx_junit
-    androidTestImplementation libraries.androidx_espresso_core
-
     //oversea dependencies
     overseaImplementation platform(libraries.firebase_bom)
     overseaImplementation libraries.firebase_analytics
